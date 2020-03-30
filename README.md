@@ -1,9 +1,11 @@
 # DatabaseLinke.R – Parse links to databases from your list of  gene symbols
 A set of functions to parse links to genomics related websites.
 
-[Get the DatabaseLinke.R](https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.R)
+[Get the DatabaseLinke.R](https://github.com/vertesy/DatabaseLinke.R/blob/master/DatabaseLinke.R)
 
-### Summary
+[TOC]
+
+## Summary
 
 A set of functions to parse links to genomics related websites.
 
@@ -15,7 +17,7 @@ It can do 3 things:
 
 *Note: It typically parses query (search) links, instead direct links*
 
-### List of Databases
+## List of Databases
 
 - **[Ensemble](https://www.ensembl.org/index.html)**
 - **[Uniprot](https://www.uniprot.org/)**
@@ -23,14 +25,14 @@ It can do 3 things:
 - **[Pubmed](https://www.ncbi.nlm.nih.gov/pubmed/)**
 - **[Wikipedia](https://en.wikipedia.org/wiki/Main_Page)**
 
-#### Species specific
+### Species specific
 
 - **[Wormbase](http://www.wormbase.org/)**
 - **[HGNC (Human Gene Nomenclature)](http://www.genenames.org/)**
 
-### Install
+## Install
 
-1.) Download and source: https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.R
+1.) Download and source: https://github.com/vertesy/DatabaseLinke.R/blob/master/DatabaseLinke.R
 
 
 2.) Source from the web:
@@ -40,6 +42,8 @@ source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/R/Datab
 ```
 
 Read: https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinkeR.md
+
+
 
 ## Components
 
@@ -94,7 +98,70 @@ as a character vector, so you can write out in a column of your gene-table.
 
 
 
-#### [Google search URL / search query](http://www.our-picks.com/archives/2007/01/30/google-search-urls-revealed-or-how-to-create-your-own-search-url/)
+## List of functions
+
+- #### `openURLs.1by1()`
+ Open links with ~1 second delay. Necessary for slower computers and not to trigger the "robot" blocker of search engines (where you will pass your commands).
+
+- #### `link_GeneCards()`
+ Parse GeneCards links to your list of gene symbols
+
+- #### `link_ensembl_zebra()`
+ Parse the latest ensembl (GRC38) links to your list of gene symbols
+
+- #### `link_ensembl_mice()`
+ Parse the latest ensembl (GRC38) links to your list of gene symbols
+
+- #### `link_ensembl_mice()`
+ Parse the latest ensembl (GRC38) links to your list of gene symbols
+
+- #### `link_ensembl()`
+ Parse the latest ensembl (GRC38) links to your list of gene symbols
+
+- #### `link_ensembl.grc37()`
+ Parse ensembl GRC37 links to your list of gene symbols
+
+- #### `link_uniprot_mice()`
+ Parse the latest UNIPROT links to your list of gene symbols
+
+- #### `link_uniprot_human()`
+ Parse the latest UNIPROT links to your list of gene symbols
+
+- #### `link_uniprot_zebrafish()`
+ Parse the latest UNIPROT links to your list of gene symbols
+
+- #### `link_String()`
+ Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA
+
+- #### `link_pubmed()`
+ Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+
+- #### `link_wikipedia()`
+ Parse wormbase database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+
+- #### `link_google()`
+ Parse wormbase database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+
+- #### `link_HGNC()`
+ Parse HGNC links to your list of gene symbols
+
+- #### `link_wormbase()`
+ Parse wormbase database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+
+- #### `link_CGC()`
+ Parse CGC links (worms mutant database).
+
+- #### `validateGene()`
+ Validate Gene Symbols / Names / IDs
+
+- #### `link_MGI.JAX()`
+ Parse wormbase database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+
+
+
+## Appendix
+
+### [Google search URL / search query](http://www.our-picks.com/archives/2007/01/30/google-search-urls-revealed-or-how-to-create-your-own-search-url/)
 
 | String        | Meaning                                                      |
 | ------------- | ------------------------------------------------------------ |
@@ -110,8 +177,6 @@ as a character vector, so you can write out in a column of your gene-table.
 
 
 
-
-
 ---------
 
 
@@ -119,15 +184,17 @@ as a character vector, so you can write out in a column of your gene-table.
 
 ### If you encounter a bug, or something doesn't work,
 
-1. please let me know by raising an issue on [TheCorvinas](https://github.com/vertesy/DatabaseLinke.R/issues/new?milestone=DatabaseLinke.R)
+1. please let me know by raising an issue on [DatabaseLinke.R](https://github.com/vertesy/DatabaseLinke.R/issues)
 2. Fix by providing the missing function.
    - Try to `source("https://raw.githubusercontent.com/vertesy/CodeAndRoll/master/CodeAndRoll.R")`
      [See details for CodeAndRoll](https://github.com/vertesy/DatabaseLinke.R/blob/master/R/CodeAndRoll.md)
    - If still some functons are missing, try to install MarkdownReports:
      `install.packages("devtools")`
-     `devtools::install_github(repo = "vertesy/MarkdownReports/MarkdownReports")`
+     `devtools::install_github(repo = "vertesy/MarkdownReports")`
      `require("MarkdownReports")`
      [See details for MarkdownReports](https://vertesy.github.io/MarkdownReports/)
+
+
 
 
 
