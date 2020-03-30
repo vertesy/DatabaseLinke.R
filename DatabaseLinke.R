@@ -77,7 +77,7 @@ b.dbl.writeOut =F
 b.dbl.Open =F
 
 # openURLs.1by1(links) ------------------------------------------------------------------------------------------------
-openURLs.1by1 <- function(links, wait=T) {
+openURLs.1by1 <- function(links, wait=1) { # Open links with ~1 second delay. Necessary for slower computers and not to trigger the "robot" blocker of search engines (where you will pass your commands).
   for (link in links) {
     if (wait) Sys.sleep(runif(1)+.5)
     browseURL(link)
