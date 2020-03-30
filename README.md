@@ -35,11 +35,11 @@ It can do 3 things:
 1.) Download and source: https://github.com/vertesy/DatabaseLinke.R/blob/master/DatabaseLinke.R
 
 
-2.) Source from the web:
+2.) Directly source it from the web in `R`:
 
-```r
-source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/R/DatabaseLinke.R")
-```
+   ```r
+   source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/R/DatabaseLinke.R")
+   ```
 
 Read: https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinkeR.md
 
