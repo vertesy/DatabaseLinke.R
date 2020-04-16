@@ -1,5 +1,5 @@
 # DatabaseLinke.R – Parse links to databases from your list of  gene symbols
-A set of functions to parse links to genomics related websites.
+A set of functions to parse and open (search query) links to genomics related and other websites for R. Useful when you want to explore e.g.: the function of a set of differentially expressed genes.
 
 [Get the DatabaseLinke.R](https://github.com/vertesy/DatabaseLinke.R/blob/master/DatabaseLinke.R)
 
@@ -35,11 +35,11 @@ It can do 3 things:
 1.) Download and source: https://github.com/vertesy/DatabaseLinke.R/blob/master/DatabaseLinke.R
 
 
-2.) Source from the web:
+2.) Directly source it from the web in `R`:
 
-```r
-source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/R/DatabaseLinke.R")
-```
+   ```r
+   source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/R/DatabaseLinke.R")
+   ```
 
 Read: https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinkeR.md
 
