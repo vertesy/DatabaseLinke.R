@@ -137,10 +137,10 @@ as a character vector, so you can write out in a column of your gene-table.
  Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
 
 - #### `link_wikipedia()`
- Parse wormbase database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+ Parse wikipedia search query links to your list of gene symbols.
 
 - #### `link_google()`
- Parse wormbase database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+ Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See updated google and bing services in [CodeAndRoll.R](https://vertesy.github.io/CodeAndRoll.R).
 
 - #### `link_HGNC()`
  Parse HGNC links to your list of gene symbols
@@ -155,9 +155,7 @@ as a character vector, so you can write out in a column of your gene-table.
  Validate Gene Symbols / Names / IDs
 
 - #### `link_MGI.JAX()`
- Parse wormbase database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
-
-
+  Parse MGI JAX mouse genomics links search query links to your list of gene symbols. 
 
 ## Appendix
 
