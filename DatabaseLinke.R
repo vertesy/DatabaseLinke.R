@@ -169,7 +169,7 @@ link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = F, Open = 
 
 # SRING links ------------------------------------------------------------------------
 link_String <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
-                         , organism="human", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
+                        , organism="human", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   suffix = if (is.na(organism)) { "" }
   else if (organism == "elegans") { STRING_elegans_suffix }
   else if (organism == "mouse") { STRING_mouse_suffix }
@@ -181,6 +181,23 @@ link_String <- function(vector_of_gene_symbols # Parse STRING protein interactio
     write.simple.append(bash_commands, ManualName = BashScriptLocation)
   } else if (Open) { openURLs.1by1(links) }	else { return(links) }
 }
+
+
+# SRING links ------------------------------------------------------------------------
+qString <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
+                        , organism="human", writeOut =F, Open = TRUE) {
+  suffix = if (is.na(organism)) { "" }
+  else if (organism == "elegans") { STRING_elegans_suffix }
+  else if (organism == "mouse") { STRING_mouse_suffix }
+  else if (organism == "human") { STRING_human_suffix }
+  links = paste0( STRING, vector_of_gene_symbols, suffix )
+  if (writeOut) {
+    bash_commands = paste0("open '", links, "'")
+    write.simple.append("", ManualName = BashScriptLocation)
+    write.simple.append(bash_commands, ManualName = BashScriptLocation)
+  } else if (Open) { openURLs.1by1(links) }	else { return(links) }
+}
+
 
 
 # PUBMED links ------------------------------------------------------------------------
@@ -225,7 +242,18 @@ link_google <- function(vector_of_gene_symbols # Parse google search query links
 
 # HGNC links ------------------------------------------------------------------------------------------------
 link_HGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
-                       , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
+                      , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
+  links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
+  if (writeOut) {
+    bash_commands = paste0("open ", links)
+    write.simple.append("", ManualName = BashScriptLocation)
+    write.simple.append(bash_commands, ManualName = BashScriptLocation)
+  } else if (Open) { openURLs.1by1(links) }	else { return(links) }
+}
+
+# Quick lookup versioin
+qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
+                      , writeOut = FALSE, Open = TRUE) {
   links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands = paste0("open ", links)
