@@ -1,8 +1,8 @@
 ######################################################################
 # Parse links to databases from your list of gene symbols
 ######################################################################
-# source('~/GitHub/DatabaseLinke.R/DatabaseLinke.R')
-# source ('https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/DatabaseLinke.R')
+# source('~/GitHub/Packages/DatabaseLinke.R/DatabaseLinke.R')
+# source('https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/DatabaseLinke.R')
 
 ######################################################################
 ## Full functionality is only expected on OS X
@@ -28,13 +28,6 @@ options(browser = as.vector(Sys.getenv("R_BROWSER")))
 
 # User Setup ----------------------------------------------------------------------
 BashScriptLocation = "~/bin/run.sh"
-
-.gene_IDs_hg19	 =try(read.simple.vec("~/GitHub/_Wikis/TheCorvinas.wiki/Sequencing.and.Mapping/GeneModels/gene_IDs.hg19.vec"), silent =T)
-.gene_IDs_mm10	 =try(read.simple.vec("~/GitHub/_Wikis/TheCorvinas.wiki/Sequencing.and.Mapping/GeneModels/gene_IDs.mm10.vec"), silent =T)
-.gene_names_hg19	 =try(read.simple.vec("~/GitHub/_Wikis/TheCorvinas.wiki/Sequencing.and.Mapping/GeneModels/gene_names.hg19.vec"), silent =T)
-.gene_names_mm10	 =try(read.simple.vec("~/GitHub/_Wikis/TheCorvinas.wiki/Sequencing.and.Mapping/GeneModels/gene_names.mm10.vec"), silent =T)
-
-# ALT USAGE link_fromToClilpboard =toClipboard(link_uniprot_mice(fromClipboard.as_vec(), writeOut =F))
 
 # Static part of Query links ------------------------
 GeneCards = "http://www.genecards.org/Search/Keyword?queryString="
@@ -86,7 +79,7 @@ openURLs.1by1 <- function(links, wait=1) { # Open links with ~1 second delay. Ne
 
 
 # GeneCards links ------------------------------------------------------------------------------------------------
-link_GeneCards <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse GeneCards links to your list of gene symbols.
+link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse GeneCards links to your list of gene symbols.
   links = paste0(GeneCards, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -97,7 +90,7 @@ link_GeneCards <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, O
 
 # ENSEMBL Links --------------------------------------------------------------------------------------------------------------------------------
 
-link_ensembl_zebra <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
+link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links = paste0(grc_Zebra[1], vector_of_gene_symbols, grc_Zebra[2])
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -106,7 +99,7 @@ link_ensembl_zebra <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOu
   } else if (Open) { openURLs.1by1(links) }	else { return(links) }
 }
 
-link_ensembl_mice <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
+link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links = paste0(grc_mm38[1], vector_of_gene_symbols, grc_mm38[2])
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -115,7 +108,7 @@ link_ensembl_mice <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut
   } else if (Open) { openURLs.1by1(links) }	else { return(links) }
 }
 
-link_ensembl_mice <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
+link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links = paste0(grc_mm38[1], vector_of_gene_symbols, grc_mm38[2])
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -124,7 +117,7 @@ link_ensembl_mice <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut
   } else if (Open) { openURLs.1by1(links) }	else { return(links) }
 }
 
-link_ensembl <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
+link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links = paste0(ensembl_multispecies[1], vector_of_gene_symbols, ensembl_multispecies[2])
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -133,7 +126,7 @@ link_ensembl <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Ope
   } else if (Open) { openURLs.1by1(links) }	else { return(links) }
 }
 
-link_ensembl.grc37 <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse ensembl GRC37 links to your list of gene symbols.
+link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse ensembl GRC37 links to your list of gene symbols.
   links = paste0(grc37[1], vector_of_gene_symbols, grc37[2])
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -144,7 +137,7 @@ link_ensembl.grc37 <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOu
 
 ## UNIPROT Links --------------------------------------------------------------------------------------------------------------------------------
 
-link_uniprot_mice <- function (vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
+link_uniprot_mice <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links = paste0(uniprot_mouse[1], vector_of_gene_symbols, uniprot_mouse[2] )
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -155,7 +148,7 @@ link_uniprot_mice <- function (vector_of_gene_symbols, writeOut = F, Open = b.db
 lll='http://www.uniprot.org/uniprot/?query=Eef1d+Mouse+reviewed%3Ayes+&sort=score'
 
 
-link_uniprot_human <- function (vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
+link_uniprot_human <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links = paste0( uniprot_human[1], vector_of_gene_symbols, uniprot_human[2] )
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -164,7 +157,7 @@ link_uniprot_human <- function (vector_of_gene_symbols, writeOut = F, Open = b.d
   } else if (Open) { openURLs.1by1(links) }	else { return(links) }
 }
 
-link_uniprot_zebrafish <- function (vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
+link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links = paste0( uniprot_zebra[1], vector_of_gene_symbols, uniprot_zebra[2] )
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -175,7 +168,7 @@ link_uniprot_zebrafish <- function (vector_of_gene_symbols, writeOut = F, Open =
 
 
 # SRING links ------------------------------------------------------------------------
-link_String <- function (vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
+link_String <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
                          , organism="human", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   suffix = if (is.na(organism)) { "" }
   else if (organism == "elegans") { STRING_elegans_suffix }
@@ -192,7 +185,7 @@ link_String <- function (vector_of_gene_symbols # Parse STRING protein interacti
 
 # PUBMED links ------------------------------------------------------------------------
 
-link_pubmed <- function (vector_of_gene_symbols  # Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+link_pubmed <- function(vector_of_gene_symbols  # Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
                          , additional_terms = "", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links = paste0( PUBMED_search_prefix, vector_of_gene_symbols, " ", paste(additional_terms, collapse = " ") )
   if (writeOut) {
@@ -205,7 +198,7 @@ link_pubmed <- function (vector_of_gene_symbols  # Parse PUBMED database links t
 
 # Wikipedia links ------------------------------------------------------------------------
 
-link_wikipedia <- function (vector_of_gene_symbols  # Parse wikipedia search query links to your list of gene symbols.
+link_wikipedia <- function(vector_of_gene_symbols  # Parse wikipedia search query links to your list of gene symbols.
                             , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links = paste0( wikipedia, vector_of_gene_symbols)
   if (writeOut) {
@@ -218,7 +211,7 @@ link_wikipedia <- function (vector_of_gene_symbols  # Parse wikipedia search que
 # Google search URL / search query links ------------------------------------------------------------------------
 google="http://www.google.com/search?as_q="
 
-link_google <- function (vector_of_gene_symbols # Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See updated google and bing services in [CodeAndRoll.R](https://vertesy.github.io/CodeAndRoll.R).
+link_google <- function(vector_of_gene_symbols # Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See updated google and bing services in [CodeAndRoll.R](https://vertesy.github.io/CodeAndRoll.R).
                          , prefix ="", suffix ="", writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep=1) {
   links = paste0( google, prefix," ", vector_of_gene_symbols," ", suffix)
   if (writeOut) {
@@ -231,7 +224,7 @@ link_google <- function (vector_of_gene_symbols # Parse google search query link
 
 
 # HGNC links ------------------------------------------------------------------------------------------------
-link_HGNC <- function (vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
+link_HGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
                        , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
   if (writeOut) {
@@ -243,7 +236,7 @@ link_HGNC <- function (vector_of_gene_symbols # Parse HGNC links to your list of
 
 # wormbase links ------------------------------------------------------------------------
 
-link_wormbase <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse wormbase database links to your list of gene symbols..
+link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse wormbase database links to your list of gene symbols..
   links = paste0( wormbase_search_prefix, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands = paste0("open '", links, "'")
@@ -254,7 +247,7 @@ link_wormbase <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Op
 
 # CGC links (worms mutant database) ------------------------------------------------------------------------
 
-link_CGC <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse CGC links (worms mutant database).
+link_CGC <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse CGC links (worms mutant database).
   links = paste0( worm_CGC_prefix[1], vector_of_gene_symbols, worm_CGC_prefix[2] )
   if (writeOut) {
     bash_commands = paste0("open '", links, "'")
@@ -265,37 +258,11 @@ link_CGC <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = 
 }
 
 
-# Validate Gene Symbols / Names / IDs ------------------------------------------------------------------------
-
-validateGene <- function (vector_of_gene_symbols, ExpressionMatrix, SubsetOfGeneIDs = NULL, species = c("human", "mice")[1]) { # Validate Gene Symbols / Names / IDs,
-  condition = F
-  any_print(length(MarkerGenes), " gene symbols are provided."); print("", quote = F)
-  gene_IDs = if (species == "human") {.gene_IDs_hg19} else if (species == "mice") {.gene_IDs_mm10}
-  found = gene_IDs[sub("\\_\\_chr\\w+","",gene_IDs) %in% vector_of_gene_symbols]
-  not_found = setdiff(vector_of_gene_symbols, id2name(found))
-  if (length(not_found)) {any_print(length(not_found), "genes are not found in the",species,"reference: ", not_found, "or", x=parse_vec(not_found)); print("", quote = F) } #if
-
-  GenesDetected = rownames(ExpressionMatrix)
-  expressed = intersect(found, GenesDetected)
-  not_expressed = setdiff(found, GenesDetected)
-  if (length(not_expressed)) {any_print(length(not_expressed), "existing genes are not expressed: ", not_expressed, "or", x=parse_vec(not_expressed)); print("", quote = F) } #if
-  any_print(length(expressed), "genes are expressed: ", expressed); print("", quote = F)
-
-  if (length(SubsetOfGeneIDs)) {
-    inSubset = intersect(expressed, SubsetOfGeneIDs)
-    any_print(length(inSubset), "genes are expressed and found in", substitute(SubsetOfGeneIDs),": ", inSubset); print("", quote = F)
-    return(inSubset)
-  } else { return(expressed) }
-
-}
-# x=validateGene(MarkerGenes, HeartSlices, SubsetOfGeneIDs = HE_genes)
-
-
 # MGI JAX mouse genomics links ------------------------------------------------------------------------
 MGI_search_prefix = "http://www.informatics.jax.org/searchtool/Search.do?query="
 MGI_search_suffix = "&submit=Quick+Search"
 
-link_MGI.JAX <- function (vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
+link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
   links = paste0( MGI_search_prefix, vector_of_gene_symbols, MGI_search_suffix)
   if (writeOut) {
     bash_commands = paste0("open '", links, "'")
