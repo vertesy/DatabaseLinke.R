@@ -38,7 +38,7 @@ It can do 3 things:
 2.) Directly source it from the web in `R`:
 
    ```r
-   source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/R/DatabaseLinke.R")
+   source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/DatabaseLinke.R")
    ```
 
 Read: https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinkeR.md
