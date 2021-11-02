@@ -20,6 +20,15 @@
 ##
 ######################################################################
 
+utils::globalVariables(c(
+  'BashScriptLocation', 'GeneCards', 'PUBMED_search_prefix', 'wikipedia', 'ensembl_multispecies'
+  , 'grc37', 'grc38', 'grc_mm38', 'grc_Zebra', 'uniprot_mouse', 'uniprot_human', 'uniprot_zebra'
+  , 'STRING', 'STRING_mouse_suffix', 'STRING_human_suffix', 'STRING_elegans_suffix', 'HGNC_symbol_search'
+  , 'wormbase_search_prefix', 'worm_CGC_prefix'
+  , "google", "MGI_search_prefix", "MGI_search_suffix", 'b.dbl.writeOut', 'b.dbl.Open'
+))
+
+
 # vector_of_gene_symbols =c("Oct4", "Dazl")
 "As of 2019 Firefox Qunatum is not working with BrowseURL"
 Sys.setenv("R_BROWSER" = "/usr/bin/open -a '/Applications/Safari.app'")
@@ -65,6 +74,11 @@ HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search="
 
 wormbase_search_prefix = "https://www.wormbase.org/search/gene/"
 worm_CGC_prefix =c("http://www.cgc.cbs.umn.edu/search.php?st=","&field=all&exst=&exfield=all")
+
+
+google="http://www.google.com/search?as_q="
+MGI_search_prefix = "http://www.informatics.jax.org/searchtool/Search.do?query="
+MGI_search_suffix = "&submit=Quick+Search"
 
 b.dbl.writeOut =F
 b.dbl.Open =F
@@ -312,7 +326,7 @@ link_wikipedia <- function(vector_of_gene_symbols  # Parse wikipedia search quer
 }
 
 # Google search URL / search query links ------------------------------------------------------------------------
-google="http://www.google.com/search?as_q="
+# google="http://www.google.com/search?as_q="
 
 #' @title link_google
 #' @description Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See updated google and bing services in [CodeAndRoll.R](https://vertesy.github.io/CodeAndRoll.R).
@@ -406,8 +420,6 @@ link_CGC <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b
 
 
 # MGI JAX mouse genomics links ------------------------------------------------------------------------
-MGI_search_prefix = "http://www.informatics.jax.org/searchtool/Search.do?query="
-MGI_search_suffix = "&submit=Quick+Search"
 
 #' @title link_MGI.JAX
 #' @description Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
