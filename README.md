@@ -44,9 +44,9 @@ devtools::install_github(repo = "vertesy/DatabaseLinke.R ")
 
 
 
-## Use
+## Usage
 
-Simply load the package:
+#### 1) Simply load the package:
 
 ```r
 require("DatabaseLinke.R ")
@@ -55,31 +55,54 @@ require("DatabaseLinke.R ")
 Then call user setup script (every time before using)
 
    ```r
-source("https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.Setup.Global.Variables.R")
+source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/R/DatabaseLinke.Setup.Global.Variables.R")
    ```
 
 
 
-### Alternative
+#### 2) Alternative
 
 Directly source it from the web in `R`:
 
    ```r
-   source("https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.R")
-   source("https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.Setup.Global.Variables.R")
+   source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/R/DatabaseLinke.R")
+   source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/R/DatabaseLinke.Setup.Global.Variables.R")
    ```
 
 You can also download and source.
 
+### Test it!
 
+```r
+# Dummy
+geneSymbols = c('Sox2', 'Actb'); 
 
-## Components
+# Test Helper
+openURLs.1by1("http://www.google.com/search?as_q= Sox2 ")
 
-1. R script containing functions each of which operates on vectors of gene symbols.
-2. An executable bash script that you need to make. You can make it anywhere, but you need to specify it in the R-script's `BashScriptLocation` variable.
+# Test
+link_GeneCards(geneSymbols); link_GeneCards(geneSymbols, Open = TRUE)
+link_ensembl_zebra(geneSymbols); link_ensembl_zebra(geneSymbols, Open = TRUE)
+link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
+link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
+link_ensembl(geneSymbols); link_ensembl(geneSymbols, Open = TRUE)
+link_ensembl.grc37(geneSymbols); link_ensembl.grc37(geneSymbols, Open = TRUE)
+link_uniprot_mice(geneSymbols); link_uniprot_mice(geneSymbols, Open = TRUE)
+link_uniprot_human(geneSymbols); link_uniprot_human(geneSymbols, Open = TRUE)
+link_uniprot_zebrafish(geneSymbols); link_uniprot_zebrafish(geneSymbols, Open = TRUE)
+link_String(geneSymbols); link_String(geneSymbols, Open = TRUE)
+qString(geneSymbols); qString(geneSymbols, Open = TRUE)
+link_pubmed(geneSymbols); link_pubmed(geneSymbols, Open = TRUE)
+link_wikipedia(geneSymbols); link_wikipedia(geneSymbols, Open = TRUE)
+link_google(geneSymbols); link_google(geneSymbols, Open = TRUE)
+link_HGNC(geneSymbols); link_HGNC(geneSymbols, Open = TRUE)
+qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
+link_wormbase(geneSymbols); link_wormbase(geneSymbols, Open = TRUE)
+link_MGI.JAX(geneSymbols); link_MGI.JAX(geneSymbols, Open = TRUE)
 
+```
 
-## Usage
+### Use details
 
 *Default species is typically mice*
 
@@ -92,16 +115,17 @@ You can use the functions in 3 ways:
    ```
 
 2. Writes the link in a bash script, called run.sh:   
-	```r
-	link_String("Mecom", writeOut = T)
-	```
 
-   - use, if  you have too many links to open at once
-   - When you run the script, it opens all the links as tabs in your default browser (on OS X /  *nix).
-   - **Comment out some lines if its too much**
-   - More precisely, it will write the links to `BashScriptLocation` in an executable format.
+   ```r
+   link_String("Mecom", writeOut = T)
+   ```
 
-### Writing to file
+    - use, if  you have too many links to open at once
+    - When you run the script, it opens all the links as tabs in your default browser (on OS X /  *nix).
+    - **Comment out some lines if its too much**
+    - More precisely, it will write the links to `BashScriptLocation` in an executable format.
+
+#### Writing to file
 
 Using `link_String("Mecom", writeOut = T)`, in your bash script, you will find:
 
@@ -110,7 +134,7 @@ open 'http://string-db.org/newstring_cgi/show_network_section.pl?identifier=Meco
 ```
 
 
-### Print links to the screen
+#### Print links to the screen
 
 ```r
 link_String("Mecom", writeOut = F, Open=F)
@@ -123,6 +147,13 @@ http://string-db.org/newstring_cgi/show_network_section.pl?identifier=Mecom&spec
 ```
 
 as a character vector, so you can write out in a column of your gene-table.
+
+
+
+## Components
+
+1. R script containing functions each of which operates on vectors of gene symbols.
+2. An executable bash script that you need to make. You can make it anywhere, but you need to specify it in the R-script's `BashScriptLocation` variable.
 
 
 
@@ -176,8 +207,8 @@ as a character vector, so you can write out in a column of your gene-table.
 - #### `link_wormbase()`
  Parse wormbase database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
 
-- #### `link_CGC()`
- Parse CGC links (worms mutant database).
+- #### ~~`link_CGC()`~~
+ ~~Parse CGC links (worms mutant database).~~
 
 - #### `validateGene()`
  Validate Gene Symbols / Names / IDs
