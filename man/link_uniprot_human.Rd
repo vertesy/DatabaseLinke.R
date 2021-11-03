@@ -16,3 +16,6 @@ link_uniprot_human(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open)
 \description{
 Parse the latest UNIPROT links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_uniprot_human(geneSymbols); link_uniprot_human(geneSymbols, Open = TRUE)
+}

@@ -20,3 +20,6 @@ link_GeneCards(
 \description{
 Parse GeneCards links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_GeneCards(geneSymbols); link_GeneCards(geneSymbols, Open = TRUE)
+}

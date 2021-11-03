@@ -23,3 +23,6 @@ link_pubmed(
 \description{
 Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_pubmed(geneSymbols); link_pubmed(geneSymbols, Open = TRUE)
+}

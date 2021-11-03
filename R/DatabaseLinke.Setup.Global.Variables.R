@@ -5,6 +5,7 @@
 # source('https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/DatabaseLinke.R')
 
 
+
 # User Setup ----------------------------------------------------------------------
 {
   b.dbl.writeOut =F
@@ -43,7 +44,7 @@
   HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search="
 
   wormbase_search_prefix = "https://www.wormbase.org/search/gene/"
-  worm_CGC_prefix =c("http://www.cgc.cbs.umn.edu/search.php?st=","&field=all&exst=&exfield=all")
+  # worm_CGC_prefix =c("http://www.cgc.cbs.umn.edu/search.php?st=","&field=all&exst=&exfield=all")
 
   MGI_search_prefix = "http://www.informatics.jax.org/searchtool/Search.do?query="
   MGI_search_suffix = "&submit=Quick+Search"
@@ -53,4 +54,5 @@
 # uniprot_mouse =c('http://www.uniprot.org/uniprot/?query=organism%3A"Mus+musculus+[10090]"+',"&sort=score")
 # uniprot_human =c('http://www.uniprot.org/uniprot/?query=organism%3A"Homo+sapiens+%28Human%29+[9606]"+',"&sort=score")
 # uniprot_zebra =c('http://www.uniprot.org/uniprot/?query=organism%3A"Danio+rerio+(Zebrafish)+(Brachydanio+rerio)+[7955]"+',"&sort=score")
+#
 

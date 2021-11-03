@@ -20,3 +20,6 @@ link_wikipedia(
 \description{
 Parse wikipedia search query links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_wikipedia(geneSymbols); link_wikipedia(geneSymbols, Open = TRUE)
+}

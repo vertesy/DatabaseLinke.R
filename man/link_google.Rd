@@ -29,3 +29,6 @@ link_google(
 \description{
 Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See updated google and bing services in \href{https://vertesy.github.io/CodeAndRoll.R}{CodeAndRoll.R}.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_google(geneSymbols); link_google(geneSymbols, Open = TRUE)
+}

@@ -23,3 +23,6 @@ link_String(
 \description{
 Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_String(geneSymbols); link_String(geneSymbols, Open = TRUE)
+}

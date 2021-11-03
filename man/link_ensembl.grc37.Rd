@@ -20,3 +20,6 @@ link_ensembl.grc37(
 \description{
 Parse ensembl GRC37 links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_ensembl.grc37(geneSymbols); link_ensembl.grc37(geneSymbols, Open = TRUE)
+}

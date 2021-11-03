@@ -18,3 +18,6 @@ qString(vector_of_gene_symbols, organism = "human", writeOut = F, Open = TRUE)
 \description{
 Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); qString(geneSymbols); qString(geneSymbols, Open = TRUE)
+}

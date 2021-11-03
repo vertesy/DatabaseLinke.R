@@ -34,6 +34,7 @@ utils::globalVariables(c(
 #' @description Open links with ~1 second delay. Necessary for slower computers and not to trigger the "robot" blocker of search engines (where you will pass your commands).
 #' @param links PARAM_DESCRIPTION
 #' @param wait PARAM_DESCRIPTION, Default: 1
+#' @examples geneSymbols = c('Sox2', 'Actb'); openURLs.1by1(geneSymbols)
 #' @export
 openURLs.1by1 <- function(links, wait=1) { # Open links with ~1 second delay. Necessary for slower computers and not to trigger the "robot" blocker of search engines (where you will pass your commands).
   for (link in links) {
@@ -49,6 +50,7 @@ openURLs.1by1 <- function(links, wait=1) { # Open links with ~1 second delay. Ne
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_GeneCards(geneSymbols); link_GeneCards(geneSymbols, Open = TRUE)
 #' @export
 link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse GeneCards links to your list of gene symbols.
   links = paste0(GeneCards, vector_of_gene_symbols)
@@ -66,6 +68,7 @@ link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Op
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl_zebra(geneSymbols); link_ensembl_zebra(geneSymbols, Open = TRUE)
 #' @export
 link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links = paste0(grc_Zebra[1], vector_of_gene_symbols, grc_Zebra[2])
@@ -81,6 +84,7 @@ link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
 #' @export
 link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links = paste0(grc_mm38[1], vector_of_gene_symbols, grc_mm38[2])
@@ -96,6 +100,7 @@ link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut,
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
 #' @export
 link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links = paste0(grc_mm38[1], vector_of_gene_symbols, grc_mm38[2])
@@ -111,6 +116,7 @@ link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut,
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl(geneSymbols); link_ensembl(geneSymbols, Open = TRUE)
 #' @export
 link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links = paste0(ensembl_multispecies[1], vector_of_gene_symbols, ensembl_multispecies[2])
@@ -126,6 +132,7 @@ link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl.grc37(geneSymbols); link_ensembl.grc37(geneSymbols, Open = TRUE)
 #' @export
 link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse ensembl GRC37 links to your list of gene symbols.
   links = paste0(grc37[1], vector_of_gene_symbols, grc37[2])
@@ -143,6 +150,7 @@ link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: F
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_uniprot_mice(geneSymbols); link_uniprot_mice(geneSymbols, Open = TRUE)
 #' @export
 link_uniprot_mice <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links = paste0(uniprot_mouse[1], vector_of_gene_symbols, uniprot_mouse[2] )
@@ -160,6 +168,7 @@ lll='http://www.uniprot.org/uniprot/?query=Eef1d+Mouse+reviewed%3Ayes+&sort=scor
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: F
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_uniprot_human(geneSymbols); link_uniprot_human(geneSymbols, Open = TRUE)
 #' @export
 link_uniprot_human <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links = paste0( uniprot_human[1], vector_of_gene_symbols, uniprot_human[2] )
@@ -175,6 +184,7 @@ link_uniprot_human <- function(vector_of_gene_symbols, writeOut = F, Open = b.db
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: F
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_uniprot_zebrafish(geneSymbols); link_uniprot_zebrafish(geneSymbols, Open = TRUE)
 #' @export
 link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links = paste0( uniprot_zebra[1], vector_of_gene_symbols, uniprot_zebra[2] )
@@ -193,6 +203,7 @@ link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = F, Open = 
 #' @param organism PARAM_DESCRIPTION, Default: 'human'
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_String(geneSymbols); link_String(geneSymbols, Open = TRUE)
 #' @export
 link_String <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
                         , organism="human", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
@@ -216,6 +227,7 @@ link_String <- function(vector_of_gene_symbols # Parse STRING protein interactio
 #' @param organism PARAM_DESCRIPTION, Default: 'human'
 #' @param writeOut PARAM_DESCRIPTION, Default: F
 #' @param Open PARAM_DESCRIPTION, Default: TRUE
+#' @examples geneSymbols = c('Sox2', 'Actb'); qString(geneSymbols); qString(geneSymbols, Open = TRUE)
 #' @export
 qString <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
                     , organism="human", writeOut =F, Open = TRUE) {
@@ -241,6 +253,7 @@ qString <- function(vector_of_gene_symbols # Parse STRING protein interaction da
 #' @param additional_terms PARAM_DESCRIPTION, Default: ''
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_pubmed(geneSymbols); link_pubmed(geneSymbols, Open = TRUE)
 #' @export
 link_pubmed <- function(vector_of_gene_symbols  # Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
                         , additional_terms = "", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
@@ -260,6 +273,7 @@ link_pubmed <- function(vector_of_gene_symbols  # Parse PUBMED database links to
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_wikipedia(geneSymbols); link_wikipedia(geneSymbols, Open = TRUE)
 #' @export
 link_wikipedia <- function(vector_of_gene_symbols  # Parse wikipedia search query links to your list of gene symbols.
                            , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
@@ -282,6 +296,7 @@ link_wikipedia <- function(vector_of_gene_symbols  # Parse wikipedia search quer
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
 #' @param sleep PARAM_DESCRIPTION, Default: 1
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_google(geneSymbols); link_google(geneSymbols, Open = TRUE)
 #' @export
 link_google <- function(vector_of_gene_symbols # Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See updated google and bing services in [CodeAndRoll.R](https://vertesy.github.io/CodeAndRoll.R).
                         , prefix ="", suffix ="", writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep=1) {
@@ -301,6 +316,7 @@ link_google <- function(vector_of_gene_symbols # Parse google search query links
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_HGNC(geneSymbols); link_HGNC(geneSymbols, Open = TRUE)
 #' @export
 link_HGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
                       , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
@@ -318,6 +334,7 @@ link_HGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of 
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: FALSE
 #' @param Open PARAM_DESCRIPTION, Default: TRUE
+#' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
 #' @export
 qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
                   , writeOut = FALSE, Open = TRUE) {
@@ -336,6 +353,7 @@ qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_wormbase(geneSymbols); link_wormbase(geneSymbols, Open = TRUE)
 #' @export
 link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse wormbase database links to your list of gene symbols..
   links = paste0( wormbase_search_prefix, vector_of_gene_symbols)
@@ -346,23 +364,6 @@ link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Ope
   } else if (Open) { openURLs.1by1(links) } else { return(links) }
 }
 
-# CGC links (worms mutant database) ------------------------------------------------------------------------
-
-#' @title link_CGC
-#' @description Parse CGC links (worms mutant database).
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
-#' @export
-link_CGC <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse CGC links (worms mutant database).
-  links = paste0( worm_CGC_prefix[1], vector_of_gene_symbols, worm_CGC_prefix[2] )
-  if (writeOut) {
-    bash_commands = paste0("open '", links, "'")
-    write.simple.append("", ManualName = BashScriptLocation)
-    write.simple.append(bash_commands, ManualName = BashScriptLocation)
-  } else if (Open) { openURLs.1by1(links) } else { return(links)}
-
-}
 
 
 # MGI JAX mouse genomics links ------------------------------------------------------------------------
@@ -372,6 +373,7 @@ link_CGC <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_MGI.JAX(geneSymbols); link_MGI.JAX(geneSymbols, Open = TRUE)
 #' @export
 link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
   links = paste0( MGI_search_prefix, vector_of_gene_symbols, MGI_search_suffix)

@@ -16,3 +16,6 @@ link_HGNC(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open)
 \description{
 Parse HGNC links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_HGNC(geneSymbols); link_HGNC(geneSymbols, Open = TRUE)
+}

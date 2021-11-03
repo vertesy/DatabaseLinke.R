@@ -20,3 +20,6 @@ link_ensembl_zebra(
 \description{
 Parse the latest ensembl (GRC38) links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_ensembl_zebra(geneSymbols); link_ensembl_zebra(geneSymbols, Open = TRUE)
+}

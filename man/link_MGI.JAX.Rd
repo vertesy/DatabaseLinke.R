@@ -20,3 +20,6 @@ link_MGI.JAX(
 \description{
 Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_MGI.JAX(geneSymbols); link_MGI.JAX(geneSymbols, Open = TRUE)
+}

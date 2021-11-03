@@ -16,3 +16,6 @@ qHGNC(vector_of_gene_symbols, writeOut = FALSE, Open = TRUE)
 \description{
 Parse HGNC links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
+}

@@ -28,3 +28,7 @@ Parse the latest ensembl (GRC38) links to your list of gene symbols.
 
 Parse the latest ensembl (GRC38) links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
+geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
+}

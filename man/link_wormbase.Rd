@@ -20,3 +20,6 @@ link_wormbase(
 \description{
 Parse wormbase database links to your list of gene symbols..
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_wormbase(geneSymbols); link_wormbase(geneSymbols, Open = TRUE)
+}

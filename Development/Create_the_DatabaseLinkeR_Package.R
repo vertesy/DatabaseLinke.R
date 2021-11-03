@@ -41,7 +41,7 @@ DESCRIPTION <- list("Title" = "DatabaseLinke.R – Parse links to databases from
     to genomics related and other websites for R. Useful when you want to explore
     e.g.: the function of a set of differentially expressed genes."
     , "License" = "GPL-3 + file LICENSE"
-    , "Version" = "1.4.1"
+    , "Version" = "1.5.0"
     , "Packaged" =  Sys.time()
     , "Repository" =  "CRAN"
     , "Imports" = "MarkdownReports"
@@ -84,6 +84,7 @@ document()
 # # setwd(RepositoryDir)
 install(RepositoryDir)
 # require("DatabaseLinke.R")
+# source("https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.Setup.Global.Variables.R")
 
 # # remove.packages("DatabaseLinke.R")
 # # Test your package ------------------------------------------------

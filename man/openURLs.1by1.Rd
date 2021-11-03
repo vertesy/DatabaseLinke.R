@@ -14,3 +14,6 @@ openURLs.1by1(links, wait = 1)
 \description{
 Open links with ~1 second delay. Necessary for slower computers and not to trigger the "robot" blocker of search engines (where you will pass your commands).
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); openURLs.1by1(geneSymbols)
+}

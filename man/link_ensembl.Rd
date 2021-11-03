@@ -20,3 +20,6 @@ link_ensembl(
 \description{
 Parse the latest ensembl (GRC38) links to your list of gene symbols.
 }
+\examples{
+geneSymbols = c('Sox2', 'Actb'); link_ensembl(geneSymbols); link_ensembl(geneSymbols, Open = TRUE)
+}
