@@ -1,4 +1,7 @@
+***Cite via:***[![DOI](https://zenodo.org/badge/251416302.svg)](https://zenodo.org/badge/latestdoi/251416302)
+
 # DatabaseLinke.R – Parse links to databases from your list of  gene symbols
+
 A set of functions to parse and open (search query) links to genomics related and other websites for R. Useful when you want to explore e.g.: the function of a set of differentially expressed genes.
 
 [Get the DatabaseLinke.R](https://github.com/vertesy/DatabaseLinke.R/blob/master/DatabaseLinke.R)
@@ -236,7 +239,7 @@ as a character vector, so you can write out in a column of your gene-table.
 
 ---------
 
-
+## Troubleshooting
 
 
 ### If you encounter a bug, or something doesn't work,
@@ -252,6 +255,14 @@ as a character vector, so you can write out in a column of your gene-table.
      [See details for MarkdownReports](https://vertesy.github.io/MarkdownReports/)
 
 
+
+
+
+---
+
+Vertesy, 2021.  ***Cite via:*** [![DOI](https://zenodo.org/badge/251416302.svg)](https://zenodo.org/badge/latestdoi/251416302)
+
+<br>
 
 
 
