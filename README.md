@@ -32,16 +32,44 @@ It can do 3 things:
 
 ## Install
 
-1.) Download and source: https://github.com/vertesy/DatabaseLinke.R/blob/master/DatabaseLinke.R
+1. Install package
+
+Install directly from **GitHub** via **devtools** with one R command:
+
+```r
+# install.packages("devtools"); # If you don't have it.
+require("devtools")
+devtools::install_github(repo = "vertesy/DatabaseLinke.R ")
+```
 
 
-2.) Directly source it from the web in `R`:
+
+## Use
+
+Simply load the package:
+
+```r
+require("DatabaseLinke.R ")
+```
+
+Then call user setup script (every time before using)
 
    ```r
-   source("https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/DatabaseLinke.R")
+source("https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.Setup.Global.Variables.R")
    ```
 
-Read: https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinkeR.md
+
+
+### Alternative
+
+Directly source it from the web in `R`:
+
+   ```r
+   source("https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.R")
+   source("https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.Setup.Global.Variables.R")
+   ```
+
+You can also download and source.
 
 
 
