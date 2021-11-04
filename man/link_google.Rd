@@ -6,15 +6,18 @@
 \usage{
 link_google(
   vector_of_gene_symbols,
+  google = "http://www.google.com/search?as_q = ",
   prefix = "",
   suffix = "",
   writeOut = b.dbl.writeOut,
   Open = b.dbl.Open,
-  sleep = 1
+  sleep = 0
 )
 }
 \arguments{
 \item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+
+\item{google}{google search string, "http://www.google.com/search?as_q = "}
 
 \item{prefix}{PARAM_DESCRIPTION, Default: ''}
 

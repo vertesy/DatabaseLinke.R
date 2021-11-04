@@ -6,28 +6,27 @@
 rm(list = ls(all.names = TRUE));
 try(dev.off(), silent = TRUE)
 # install.packages("devtools")
+
 # Functions ------------------------
-try (source('~/GitHub/Packages/CodeAndRoll/CodeAndRoll.R'),silent= FALSE)
+# install_version("devtools", version = "2.0.2", repos = "http://cran.at.r-project.org") # install.packages("devtools")
+require("devtools")
+require("roxygen2")
+require("stringr")
 
-# irequire("devtools")
-# install_version("devtools", version = "2.0.2", repos = "http://cran.at.r-project.org")
-irequire("devtools")
-irequire("roxygen2")
-irequire("stringr")
+# devtools::install_github(repo = "vertesy/CodeAndRoll2")
+require('CodeAndRoll2')
+require('Stringendo')
+# try (source('~/GitHub/Packages/CodeAndRoll/CodeAndRoll.R'),silent= FALSE) # ONLY If Stringendo not yet exist
+# try (source('~/GitHub/Packages/Rocinante/R/Rocinante.R'),silent= FALSE) # ONLY If Stringendo not yet exist
 
-kollapse <-function(..., print = TRUE) {
-if (print == TRUE) {
-    print(paste0(c(...), collapse = ""))
-  }
-  paste0(c(...), collapse = "")
-}
+
 
 # Setup ------------------------
-PackageName = 	"DatabaseLinke.R"
+(PackageName = 	"DatabaseLinke.R")
 setwd("~/GitHub/Packages/")
 
 RepositoryDir = kollapse("~/GitHub/Packages/", PackageName, "/")
-fname = 	kollapse(PackageName, ".R")
+fname = 	PackageName
 Package_FnP = 	kollapse(RepositoryDir, "R/", fname)
 
 BackupDir = "~/GitHub/Packages/DatabaseLinke.R/Development/"
@@ -41,10 +40,11 @@ DESCRIPTION <- list("Title" = "DatabaseLinke.R – Parse links to databases from
     to genomics related and other websites for R. Useful when you want to explore
     e.g.: the function of a set of differentially expressed genes."
     , "License" = "GPL-3 + file LICENSE"
-    , "Version" = "1.5.0"
+    , "Version" = "1.5.2"
     , "Packaged" =  Sys.time()
     , "Repository" =  "CRAN"
-    , "Imports" = "MarkdownReports"
+    # , "Imports" = "Stringendo, stats, utils"
+    , "Imports" = "ReadWriter, stats, utils"
     # , "Suggests" = ""
     , "BugReports"= "https://github.com/vertesy/DatabaseLinke.R/issues"
 )
@@ -114,3 +114,15 @@ check(RepositoryDir, cran = TRUE)
 #
 # system("cd ~/GitHub/DatabaseLinke.R/; ls -a; open .Rbuildignore")
 #
+# Check package dependencies ------------------------------------------------
+depFile = paste0(RepositoryDir, 'Development/Dependencies.R')
+
+(f.deps <- NCmisc::list.functions.in.file(filename = Package_FnP))
+# clipr::write_clip(f.deps)
+
+sink(file = depFile); print(f.deps); sink()
+p.deps <- gsub(x = names(f.deps), pattern = 'package:', replacement = '')
+write(x = p.deps, file = depFile, append = T)
+p.dep.declared <- trimws(unlist(strsplit(DESCRIPTION$Imports, ",")))
+p.dep.new <- sort(union( p.deps, p.dep.declared))
+# clipr::write_clip(p.dep.new)

@@ -5,6 +5,8 @@
 \title{qHGNC}
 \usage{
 qHGNC(vector_of_gene_symbols, writeOut = FALSE, Open = TRUE)
+
+qHGNC(vector_of_gene_symbols, writeOut = FALSE, Open = TRUE)
 }
 \arguments{
 \item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
@@ -15,7 +17,10 @@ qHGNC(vector_of_gene_symbols, writeOut = FALSE, Open = TRUE)
 }
 \description{
 Parse HGNC links to your list of gene symbols.
+
+Parse HGNC links to your list of gene symbols.
 }
 \examples{
+geneSymbols = c('Sox2', 'Actb'); link_HGNC(geneSymbols); link_HGNC(geneSymbols, Open = TRUE)
 geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
 }

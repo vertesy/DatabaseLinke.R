@@ -22,7 +22,7 @@
   # Static part of Query links ------------------------
   PUBMED_search_prefix = "https://www.ncbi.nlm.nih.gov/pubmed/?term="
   wikipedia = "http://en.wikipedia.org/w/index.php?search="
-  google="http://www.google.com/search?as_q="   # SEE: http://www.our-picks.com/archives/2007/01/30/google-search-urls-revealed-or-how-to-create-your-own-search-url/
+  # google="http://www.google.com/search?as_q="   # SEE: http://www.our-picks.com/archives/2007/01/30/google-search-urls-revealed-or-how-to-create-your-own-search-url/
   GeneCards = "http://www.genecards.org/Search/Keyword?queryString="
 
   ensembl_multispecies =c("http://www.ensembl.org/Multi/Search/Results?q=",";site=ensembl")
@@ -41,7 +41,7 @@
   STRING_elegans_suffix = "&species=6239"
 
   # Single organism databases --------------------------------------------------------------------------------
-  HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search="
+  # HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search="
 
   wormbase_search_prefix = "https://www.wormbase.org/search/gene/"
   # worm_CGC_prefix =c("http://www.cgc.cbs.umn.edu/search.php?st=","&field=all&exst=&exfield=all")

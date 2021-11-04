@@ -1,12 +1,9 @@
 Package: DatabaseLinke.R
 Title: DatabaseLinke.R – Parse links to databases from your list of gene
     symbols
-Version: 1.5.0
+Version: 1.5.2
 Authors@R: 
-    person(given = "Abel",
-           family = "Vertesy",
-           role = c("aut", "cre"),
-           email = "a.vertesy@imba.oeaw.ac.at")
+    person("Abel", "Vertesy", , "a.vertesy@imba.oeaw.ac.at", role = c("aut", "cre"))
 Author: Abel Vertesy <abel.vertesy@imba.oeaw.ac.at> [aut, cre]
 Description: A set of functions to parse and open (search query) links to
     genomics related and other websites for R. Useful when you want to
@@ -14,10 +11,11 @@ Description: A set of functions to parse and open (search query) links to
 License: GPL-3 + file LICENSE
 BugReports: https://github.com/vertesy/DatabaseLinke.R/issues
 Imports: 
-    MarkdownReports
+    ReadWriter,
+    stats,
+    utils
 Encoding: UTF-8
-LazyData: true
-Packaged: 2021-11-03 09:51:12
+Packaged: 2021-11-05 00:29:56
 Repository: CRAN
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
