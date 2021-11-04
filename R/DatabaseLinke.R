@@ -369,7 +369,7 @@ link_bing <- function(vector_of_gene_symbols #  Parse bing search query links to
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
 #' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
 #' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
-#' @examples geneSymbols = c('Sox2', 'Actb'); link_HGNC(geneSymbols); link_HGNC(geneSymbols, Open = TRUE)
+#' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = FALSE)
 #' @export
 qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
                   , HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search="
