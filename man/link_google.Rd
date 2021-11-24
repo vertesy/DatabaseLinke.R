@@ -15,19 +15,19 @@ link_google(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols}
 
 \item{google}{google search string, "http://www.google.com/search?as_q = "}
 
-\item{prefix}{PARAM_DESCRIPTION, Default: ''}
+\item{prefix}{A search prefix string to add before each gene symbol, e.g. 'gene' or 'brain'; Default: ''}
 
-\item{suffix}{PARAM_DESCRIPTION, Default: ''}
+\item{suffix}{A search suffix string to add after each gene symbol, e.g. 'gene' or 'brain'; Default: ''}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{Write links out to a file, Default: b.dbl.writeOut}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{Open a web browser with the search questy link, Default: b.dbl.Open}
 
-\item{sleep}{PARAM_DESCRIPTION, Default: 1}
+\item{sleep}{How many seconds to wait between opening tow links? Increase so that its easier for your computer , Default: 1}
 }
 \description{
 Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See updated google and bing services in \href{https://vertesy.github.io/CodeAndRoll.R}{CodeAndRoll.R}.

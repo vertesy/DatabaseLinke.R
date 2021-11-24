@@ -7,11 +7,11 @@
 link_uniprot_human(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open)
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: F}
+\item{writeOut}{Write links out to a file, Default: F}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{Open a web browser with the search questy link, Default: b.dbl.Open}
 }
 \description{
 Parse the latest UNIPROT links to your list of gene symbols.

@@ -15,7 +15,19 @@ link_bing(
 )
 }
 \arguments{
-\item{sleep}{}
+\item{vector_of_gene_symbols}{A character vector of gene symbols}
+
+\item{bing}{bing search string, "https://www.bing.com/search?q = "}
+
+\item{prefix}{A search prefix string to add before each gene symbol, e.g. 'gene' or 'brain'; Default: ''}
+
+\item{suffix}{A search suffix string to add after each gene symbol, e.g. 'gene' or 'brain'; Default: ''}
+
+\item{writeOut}{Write links out to a file, Default: b.dbl.writeOut}
+
+\item{Open}{Open a web browser with the search questy link, Default: b.dbl.Open}
+
+\item{sleep}{How many seconds to wait between opening tow links? Increase so that its easier for your computer , Default: 1}
 }
 \description{
 link_bing

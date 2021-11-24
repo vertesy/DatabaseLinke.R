@@ -12,13 +12,13 @@ link_pubmed(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols}
 
-\item{additional_terms}{PARAM_DESCRIPTION, Default: ''}
+\item{writeOut}{Write links out to a file, Default: b.dbl.writeOut}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{Open}{Open a web browser with the search questy link, Default: b.dbl.Open}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{additional}{search terms to add to the query, Default: ''}
 }
 \description{
 Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.

@@ -4,16 +4,26 @@
 \alias{qHGNC}
 \title{qHGNC}
 \usage{
-qHGNC(vector_of_gene_symbols, writeOut = FALSE, Open = TRUE)
+qHGNC(
+  vector_of_gene_symbols,
+  writeOut = FALSE,
+  Open = TRUE,
+  HGNC_symbol_searchh = "http://www.genenames.org/cgi-bin/gene_search?search="
+)
 
-qHGNC(vector_of_gene_symbols, writeOut = FALSE, Open = TRUE)
+qHGNC(
+  vector_of_gene_symbols,
+  writeOut = FALSE,
+  Open = TRUE,
+  HGNC_symbol_searchh = "http://www.genenames.org/cgi-bin/gene_search?search="
+)
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: FALSE}
+\item{writeOut}{Write links out to a file, Default: FALSE}
 
-\item{Open}{PARAM_DESCRIPTION, Default: TRUE}
+\item{Open}{Open a web browser with the search questy link, Default: TRUE}
 }
 \description{
 Parse HGNC links to your list of gene symbols.
@@ -21,6 +31,6 @@ Parse HGNC links to your list of gene symbols.
 Parse HGNC links to your list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_HGNC(geneSymbols); link_HGNC(geneSymbols, Open = TRUE)
+geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = FALSE)
 geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
 }

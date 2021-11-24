@@ -7,9 +7,9 @@
 openURLs.1by1(links, wait = 1)
 }
 \arguments{
-\item{links}{PARAM_DESCRIPTION}
+\item{links}{A character vector of links to open}
 
-\item{wait}{PARAM_DESCRIPTION, Default: 1}
+\item{wait}{How many seconds to wait between opening tow links? Increase so that its easier for your computer , Default: 1}
 }
 \description{
 Open links with ~1 second delay. Necessary for slower computers and not to trigger the "robot" blocker of search engines (where you will pass your commands).
