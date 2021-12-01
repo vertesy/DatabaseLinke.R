@@ -205,7 +205,7 @@ link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = F, Open = 
 #' @param Open Open a web browser with the search questy link, Default: b.dbl.Open
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_String(geneSymbols); link_String(geneSymbols, Open = TRUE)
 #' @export
-link_String <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
+link_String <- function(vector_of_gene_symbols = c('TOP2A', 'ACTB')# Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
                         , organism="human", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   suffix = if (is.na(organism)) { "" }
   else if (organism == "elegans") { STRING_elegans_suffix }
@@ -229,7 +229,7 @@ link_String <- function(vector_of_gene_symbols # Parse STRING protein interactio
 #' @param Open Open a web browser with the search questy link, Default: TRUE
 #' @examples geneSymbols = c('Sox2', 'Actb'); qString(geneSymbols); qString(geneSymbols, Open = TRUE)
 #' @export
-qString <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
+qString <- function(vector_of_gene_symbols = c('TOP2A', 'ACTB')# Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
                     , organism="human", writeOut =F, Open = TRUE) {
   suffix = if (is.na(organism)) { "" }
   else if (organism == "elegans") { STRING_elegans_suffix }
@@ -255,7 +255,7 @@ qString <- function(vector_of_gene_symbols # Parse STRING protein interaction da
 #' @param Open Open a web browser with the search questy link, Default: b.dbl.Open
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_pubmed(geneSymbols); link_pubmed(geneSymbols, Open = TRUE)
 #' @export
-link_pubmed <- function(vector_of_gene_symbols  # Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+link_pubmed <- function(vector_of_gene_symbols = c('TOP2A', 'ACTB') # Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
                         , additional_terms = "", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links = paste0( PUBMED_search_prefix, vector_of_gene_symbols, " ", paste(additional_terms, collapse = " ") )
   if (writeOut) {
@@ -275,7 +275,7 @@ link_pubmed <- function(vector_of_gene_symbols  # Parse PUBMED database links to
 #' @param Open Open a web browser with the search questy link, Default: b.dbl.Open
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_wikipedia(geneSymbols); link_wikipedia(geneSymbols, Open = TRUE)
 #' @export
-link_wikipedia <- function(vector_of_gene_symbols  # Parse wikipedia search query links to your list of gene symbols.
+link_wikipedia <- function(vector_of_gene_symbols = c('TOP2A', 'ACTB') # Parse wikipedia search query links to your list of gene symbols.
                            , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links = paste0( wikipedia, vector_of_gene_symbols)
   if (writeOut) {
@@ -300,7 +300,7 @@ link_wikipedia <- function(vector_of_gene_symbols  # Parse wikipedia search quer
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_google(geneSymbols); link_google(geneSymbols, Open = TRUE)
 #' @export
 
-link_google <- function(vector_of_gene_symbols #  Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
+link_google <- function(vector_of_gene_symbols = c('TOP2A', 'ACTB')#  Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
                         , google = "http://www.google.com/search?as_q = "
                         , prefix = "", suffix = ""
                         , writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
@@ -350,7 +350,7 @@ function (vector_of_gene_symbols, prefix = "", suffix = "", writeOut = b.dbl.wri
 #'
 #' @examples link_bing("ACTB")
 
-link_bing <- function(vector_of_gene_symbols #  Parse bing search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
+link_bing <- function(vector_of_gene_symbols = c('TOP2A', 'ACTB')#  Parse bing search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
                       , bing = "https://www.bing.com/search?q = ", prefix = "", suffix = ""
                       , writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
   links = paste0( bing, prefix," ", vector_of_gene_symbols," ", suffix)
@@ -371,7 +371,7 @@ link_bing <- function(vector_of_gene_symbols #  Parse bing search query links to
 #' @param Open Open a web browser with the search questy link, Default: b.dbl.Open
 #' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = FALSE)
 #' @export
-qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
+qHGNC <- function(vector_of_gene_symbols = c('TOP2A', 'ACTB')# Parse HGNC links to your list of gene symbols.
                   , HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search="
                   , writeOut = FALSE, Open = TRUE) {
   links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
@@ -382,25 +382,8 @@ qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene
   } else if (Open) { DatabaseLinke.R::openURLs.1by1(links) }	else { return(links) }
 }
 
-link_HGNC = qHGNC
+# link_HGNC = qHGNC
 
-# Quick lookup versioin
-#' @title qHGNC
-#' @description Parse HGNC links to your list of gene symbols.
-#' @param vector_of_gene_symbols A character vector of gene symbols
-#' @param writeOut Write links out to a file, Default: FALSE
-#' @param Open Open a web browser with the search questy link, Default: TRUE
-#' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
-#' @export
-qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
-                  , writeOut = FALSE, Open = TRUE, HGNC_symbol_searchh = "http://www.genenames.org/cgi-bin/gene_search?search=") {
-  links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
-  if (writeOut) {
-    bash_commands = paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
-  } else if (Open) { DatabaseLinke.R::openURLs.1by1(links) } else { return(links) }
-}
 
 # _________________________________________________________________________________________________
 

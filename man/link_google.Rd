@@ -5,7 +5,7 @@
 \title{link_google}
 \usage{
 link_google(
-  vector_of_gene_symbols,
+  vector_of_gene_symbols = c("TOP2A", "ACTB"),
   google = "http://www.google.com/search?as_q = ",
   prefix = "",
   suffix = "",

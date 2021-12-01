@@ -5,7 +5,7 @@
 \title{link_String}
 \usage{
 link_String(
-  vector_of_gene_symbols,
+  vector_of_gene_symbols = c("TOP2A", "ACTB"),
   organism = "human",
   writeOut = b.dbl.writeOut,
   Open = b.dbl.Open

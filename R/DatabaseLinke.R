@@ -382,25 +382,8 @@ qHGNC <- function(vector_of_gene_symbols = c('TOP2A', 'ACTB')# Parse HGNC links 
   } else if (Open) { DatabaseLinke.R::openURLs.1by1(links) }	else { return(links) }
 }
 
-link_HGNC = qHGNC
+# link_HGNC = qHGNC
 
-# Quick lookup versioin
-#' @title qHGNC
-#' @description Parse HGNC links to your list of gene symbols.
-#' @param vector_of_gene_symbols A character vector of gene symbols
-#' @param writeOut Write links out to a file, Default: FALSE
-#' @param Open Open a web browser with the search questy link, Default: TRUE
-#' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
-#' @export
-qHGNC <- function(vector_of_gene_symbols = c('TOP2A', 'ACTB')# Parse HGNC links to your list of gene symbols.
-                  , writeOut = FALSE, Open = TRUE, HGNC_symbol_searchh = "http://www.genenames.org/cgi-bin/gene_search?search=") {
-  links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
-  if (writeOut) {
-    bash_commands = paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
-  } else if (Open) { DatabaseLinke.R::openURLs.1by1(links) } else { return(links) }
-}
 
 # _________________________________________________________________________________________________
 

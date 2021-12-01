@@ -5,7 +5,7 @@
 \title{link_pubmed}
 \usage{
 link_pubmed(
-  vector_of_gene_symbols,
+  vector_of_gene_symbols = c("TOP2A", "ACTB"),
   additional_terms = "",
   writeOut = b.dbl.writeOut,
   Open = b.dbl.Open

@@ -40,7 +40,7 @@ DESCRIPTION <- list("Title" = "DatabaseLinke.R – Parse links to databases from
     to genomics related and other websites for R. Useful when you want to explore
     e.g.: the function of a set of differentially expressed genes."
     , "License" = "GPL-3 + file LICENSE"
-    , "Version" = "1.5.4"
+    , "Version" = "1.5.5"
     , "Packaged" =  Sys.time()
     , "Repository" =  "CRAN"
     # , "Imports" = "Stringendo, stats, utils"

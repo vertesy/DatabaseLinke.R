@@ -5,7 +5,7 @@
 \title{link_wikipedia}
 \usage{
 link_wikipedia(
-  vector_of_gene_symbols,
+  vector_of_gene_symbols = c("TOP2A", "ACTB"),
   writeOut = b.dbl.writeOut,
   Open = b.dbl.Open
 )

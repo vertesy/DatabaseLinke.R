@@ -5,7 +5,7 @@
 \title{link_bing}
 \usage{
 link_bing(
-  vector_of_gene_symbols,
+  vector_of_gene_symbols = c("TOP2A", "ACTB"),
   bing = "https://www.bing.com/search?q = ",
   prefix = "",
   suffix = "",
