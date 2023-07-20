@@ -520,14 +520,15 @@ link_SNPedia_clip2clip <- function(rdIDs = clipr::read_clip_tbl( header=F)
 
 
 # _________________________________________________________________________________________________
-#' link_Franklin_clip2clip > Databaselnker
+#' @title link_Franklin_clip2clip
 #'
-#' @param coordinates Coordinates in input format 5:35162876	C/T  OR 16:7164219	T/G
-#' @param searchQueryPrefix Genoox Franklin search query link base
-#' @param as.ExcelLink  return as Excel link, Def: TRUE
+#' @description Generate Franklin (Genoox) links from a list of coordinates.
+#' @param coordinates A two-column dataframe of coordinates in the format (e.g., 5:35162876 C/T or 16:7164219 T/G) read from the clipboard. Default: clipboard content.
+#' @param searchQueryPrefix The base URL for Genoox Franklin search query. Default: 'https://franklin.genoox.com/clinical-db/variant/snp/'.
+#' @param as.ExcelLink A logical indicating whether to format the links as Excel links. Default: TRUE.
+#' @examples link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl(header=F))
+#'
 #' @export
-#' @examples link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl( header=F) )
-
 link_Franklin_clip2clip <- function(coordinates = clipr::read_clip_tbl( header=F)
                                     , searchQueryPrefix = 'https://franklin.genoox.com/clinical-db/variant/snp/'
                                     , as.ExcelLink = T
@@ -557,15 +558,18 @@ link_Franklin_clip2clip <- function(coordinates = clipr::read_clip_tbl( header=F
 
 
 # _________________________________________________________________________________________________
-#' link_VarSome_clip2clip
+#' @title link_VarSome_clip2clip
 #'
-#' @param rdIDs  Should be row-by-row list of  rsID's from an Excel column
-#' @param searchQueryPrefix Varsome search query link base
-#' @param as.MarkDownLink  return as Excel link, Def: TRUE
-#' @param as.MarkDownLink  return as Markdown link, Def: FALSE
+#' @description Generate VarSome links from a list of rsIDs.
+#' @param rdIDs A dataframe of rsIDs read from the clipboard. Default: clipboard content.
+#' @param searchQueryPrefix The base URL for VarSome search query. Default: 'https://varsome.com/variant/'.
+#' @param hg The human genome version for the search, either "hg19" or "hg38". Default: "hg19".
+#' @param suffix The suffix for VarSome search. Default: "?annotation-mode=germline".
+#' @param as.ExcelLink A logical indicating whether to format the links as Excel links. Default: TRUE.
+#' @param as.MarkDownLink A logical indicating whether to format the links as Markdown links. Default: FALSE.
+#' @examples link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl(header=F), hg="hg38")
+#'
 #' @export
-#' @examples link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl( header=F) # "https://varsome.com/variant/hg38/rs12970134?annotation-mode=germline"
-
 link_VarSome_clip2clip <- function(rdIDs = clipr::read_clip_tbl( header=F)
                                    , searchQueryPrefix = 'https://varsome.com/variant/'
                                    , hg = "hg19"
