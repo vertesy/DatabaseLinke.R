@@ -15,11 +15,24 @@ link_bing(
 )
 }
 \arguments{
-\item{sleep}{}
+\item{vector_of_gene_symbols}{A character vector of gene symbols to generate Bing search links.}
+
+\item{bing}{A Bing search URL string, default: "https://www.bing.com/search?q = ".}
+
+\item{prefix}{A string to be added before each gene symbol in the search query, default: ''.}
+
+\item{suffix}{A string to be added after each gene symbol in the search query, default: ''.}
+
+\item{writeOut}{A boolean indicating whether to write the bash commands to file, default: b.dbl.writeOut.}
+
+\item{Open}{A boolean indicating whether to open the search links, default: b.dbl.Open.}
+
+\item{sleep}{The sleep interval in seconds between opening search links, default: 1.}
 }
 \description{
-link_bing
+Parses Bing search query links for a provided list of gene symbols.
 }
 \examples{
 link_bing("ACTB")
+
 }

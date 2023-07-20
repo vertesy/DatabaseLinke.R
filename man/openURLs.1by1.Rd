@@ -2,18 +2,21 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{openURLs.1by1}
 \alias{openURLs.1by1}
-\title{openURLs.1by1}
+\title{Open URLs One by One}
 \usage{
 openURLs.1by1(links, wait = 1)
 }
 \arguments{
-\item{links}{PARAM_DESCRIPTION}
+\item{links}{A vector of URLs to be opened sequentially.}
 
-\item{wait}{PARAM_DESCRIPTION, Default: 1}
+\item{wait}{Delay in seconds between opening each URL. By default, it is set to 1 second.}
 }
 \description{
-Open links with ~1 second delay. Necessary for slower computers and not to trigger the "robot" blocker of search engines (where you will pass your commands).
+This function opens provided links sequentially with an optional delay between each.
+This can be useful for slower computers and to avoid triggering anti-robot measures in search engines.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); openURLs.1by1(geneSymbols)
+geneSymbols = c('Sox2', 'Actb')
+openURLsOneByOne(geneSymbols)
+
 }

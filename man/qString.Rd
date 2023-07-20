@@ -7,17 +7,18 @@
 qString(vector_of_gene_symbols, organism = "human", writeOut = F, Open = TRUE)
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols for which links should be created.}
 
-\item{organism}{PARAM_DESCRIPTION, Default: 'human'}
+\item{organism}{A string indicating the organism of interest. Default is "human".}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: F}
+\item{writeOut}{A boolean indicating whether to write out the commands or not. Default is FALSE.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: TRUE}
+\item{Open}{A boolean indicating whether to open the generated links or not. Default is TRUE.}
 }
 \description{
-Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
+Generates links to the STRING protein interaction database based on a given list of gene symbols. The function supports different organisms such as mice, humans, or "NA" for no specific organism.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); qString(geneSymbols); qString(geneSymbols, Open = TRUE)
+
 }

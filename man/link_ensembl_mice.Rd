@@ -2,14 +2,8 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{link_ensembl_mice}
 \alias{link_ensembl_mice}
-\title{link_ensembl_mice}
+\title{Mouse Ensembl Link Generator}
 \usage{
-link_ensembl_mice(
-  vector_of_gene_symbols,
-  writeOut = b.dbl.writeOut,
-  Open = b.dbl.Open
-)
-
 link_ensembl_mice(
   vector_of_gene_symbols,
   writeOut = b.dbl.writeOut,
@@ -17,18 +11,16 @@ link_ensembl_mice(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector containing mouse gene symbols.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A logical parameter determining if URLs should be written out to a bash script. Default is b.dbl.writeOut.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A logical parameter determining if URLs should be opened immediately. Default is b.dbl.Open.}
 }
 \description{
-Parse the latest ensembl (GRC38) links to your list of gene symbols.
-
-Parse the latest ensembl (GRC38) links to your list of gene symbols.
+Generates the latest Ensembl (GRC38) URLs for a given list of mouse gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
-geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
+
 }

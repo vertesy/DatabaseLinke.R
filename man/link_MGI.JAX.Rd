@@ -11,15 +11,20 @@ link_MGI.JAX(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols for which to generate MGI JAX links.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A logical indicating whether to write the generated links to a file, default: FALSE.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A logical indicating whether to open the generated links in a web browser, default: TRUE.}
+
+\item{MGI_search_prefix}{The base URL for MGI JAX search.}
+
+\item{MGI_search_suffix}{The suffix for MGI JAX search.}
 }
 \description{
-Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
+Generate MGI JAX mouse genomics search query links for a list of gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_MGI.JAX(geneSymbols); link_MGI.JAX(geneSymbols, Open = TRUE)
+
 }

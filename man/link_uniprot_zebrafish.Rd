@@ -2,20 +2,21 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{link_uniprot_zebrafish}
 \alias{link_uniprot_zebrafish}
-\title{link_uniprot_zebrafish}
+\title{Parse UNIPROT Links for Zebrafish Genes}
 \usage{
 link_uniprot_zebrafish(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open)
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of zebrafish gene symbols.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: F}
+\item{writeOut}{A logical indicating whether to write out the links. Default is FALSE.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A logical indicating whether to open the links. Default is b.dbl.Open.}
 }
 \description{
-Parse the latest UNIPROT links to your list of gene symbols.
+This function generates UNIPROT links for a list of zebrafish gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_uniprot_zebrafish(geneSymbols); link_uniprot_zebrafish(geneSymbols, Open = TRUE)
+
 }

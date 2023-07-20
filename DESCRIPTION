@@ -1,7 +1,7 @@
 Package: DatabaseLinke.R
 Title: DatabaseLinke.R – Parse links to databases from your list of gene
     symbols
-Version: 1.5.2
+Version: 1.6.0
 Authors@R: 
     person("Abel", "Vertesy", , "a.vertesy@imba.oeaw.ac.at", role = c("aut", "cre"))
 Author: Abel Vertesy <abel.vertesy@imba.oeaw.ac.at> [aut, cre]
@@ -15,7 +15,6 @@ Imports:
     stats,
     utils
 Encoding: UTF-8
-Packaged: 2021-11-05 00:29:56
-Repository: CRAN
+Packaged: 2023-07-20 04:36:20
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3

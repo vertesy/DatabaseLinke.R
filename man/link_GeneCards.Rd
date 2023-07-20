@@ -2,7 +2,7 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{link_GeneCards}
 \alias{link_GeneCards}
-\title{link_GeneCards}
+\title{GeneCards Link Generator}
 \usage{
 link_GeneCards(
   vector_of_gene_symbols,
@@ -11,15 +11,16 @@ link_GeneCards(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector containing gene symbols.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A logical parameter determining if URLs should be written out to a bash script. Default is b.dbl.writeOut.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A logical parameter determining if URLs should be opened immediately. Default is b.dbl.Open.}
 }
 \description{
-Parse GeneCards links to your list of gene symbols.
+Generates GeneCards URLs for a given list of gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_GeneCards(geneSymbols); link_GeneCards(geneSymbols, Open = TRUE)
+
 }

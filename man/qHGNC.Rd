@@ -2,25 +2,26 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{qHGNC}
 \alias{qHGNC}
-\title{qHGNC}
+\title{HGNC link generator and web lookup}
 \usage{
-qHGNC(vector_of_gene_symbols, writeOut = FALSE, Open = TRUE)
-
-qHGNC(vector_of_gene_symbols, writeOut = FALSE, Open = TRUE)
+qHGNC(
+  vector_of_gene_symbols,
+  HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
+  writeOut = FALSE,
+  Open = TRUE
+)
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols to generate HGNC links.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: FALSE}
+\item{writeOut}{A boolean indicating whether to write the bash commands to file, default: FALSE.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: TRUE}
+\item{Open}{A boolean indicating whether to open the HGNC links, default: TRUE.}
 }
 \description{
-Parse HGNC links to your list of gene symbols.
-
-Parse HGNC links to your list of gene symbols.
+Parses HGNC links for a provided list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_HGNC(geneSymbols); link_HGNC(geneSymbols, Open = TRUE)
-geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
+geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = FALSE)
+
 }

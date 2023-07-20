@@ -2,7 +2,7 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{link_String}
 \alias{link_String}
-\title{link_String}
+\title{Parse STRING Database Links}
 \usage{
 link_String(
   vector_of_gene_symbols,
@@ -12,17 +12,18 @@ link_String(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols.}
 
-\item{organism}{PARAM_DESCRIPTION, Default: 'human'}
+\item{organism}{A string indicating the organism. Can be 'mouse', 'human' or 'elegans'. Default is 'human'.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A logical indicating whether to write out the links. Default is b.dbl.writeOut.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A logical indicating whether to open the links. Default is b.dbl.Open.}
 }
 \description{
-Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
+This function generates links to the STRING protein interaction database for a list of gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_String(geneSymbols); link_String(geneSymbols, Open = TRUE)
+
 }

@@ -12,17 +12,18 @@ link_pubmed(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols for which links should be created.}
 
-\item{additional_terms}{PARAM_DESCRIPTION, Default: ''}
+\item{additional_terms}{A character vector of additional terms to be included in the search query. Default is an empty string.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A boolean indicating whether to write out the commands or not. Default is determined by b.dbl.writeOut.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A boolean indicating whether to open the generated links or not. Default is determined by b.dbl.Open.}
 }
 \description{
-Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+Generates links to the PUBMED database based on a given list of gene symbols and additional search terms.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_pubmed(geneSymbols); link_pubmed(geneSymbols, Open = TRUE)
+
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{link_ensembl}
 \alias{link_ensembl}
-\title{link_ensembl}
+\title{Generate Ensembl Links}
 \usage{
 link_ensembl(
   vector_of_gene_symbols,
@@ -11,15 +11,16 @@ link_ensembl(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A vector containing gene symbols to be linked.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A boolean flag indicating whether to write out the output or not. Default is the value of \code{b.dbl.writeOut}.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A boolean flag indicating whether to open the links. Default is the value of \code{b.dbl.Open}.}
 }
 \description{
-Parse the latest ensembl (GRC38) links to your list of gene symbols.
+This function generates the latest Ensembl (GRC38) links for a list of gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_ensembl(geneSymbols); link_ensembl(geneSymbols, Open = TRUE)
+
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{link_ensembl.grc37}
 \alias{link_ensembl.grc37}
-\title{link_ensembl.grc37}
+\title{Parse Ensembl GRC37 links}
 \usage{
 link_ensembl.grc37(
   vector_of_gene_symbols,
@@ -11,15 +11,16 @@ link_ensembl.grc37(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A logical indicating whether to write out the links. Default is b.dbl.writeOut.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A logical indicating whether to open the links. Default is b.dbl.Open.}
 }
 \description{
-Parse ensembl GRC37 links to your list of gene symbols.
+This function generates Ensembl GRC37 links for a list of gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_ensembl.grc37(geneSymbols); link_ensembl.grc37(geneSymbols, Open = TRUE)
+
 }

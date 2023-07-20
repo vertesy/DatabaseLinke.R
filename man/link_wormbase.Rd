@@ -11,15 +11,18 @@ link_wormbase(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols for which to generate Wormbase links.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A logical indicating whether to write the generated links to a file, default: FALSE.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A logical indicating whether to open the generated links in a web browser, default: TRUE.}
+
+\item{wormbase_search_prefix}{The base URL for Wormbase search.}
 }
 \description{
-Parse wormbase database links to your list of gene symbols..
+Generate Wormbase database links for a list of gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_wormbase(geneSymbols); link_wormbase(geneSymbols, Open = TRUE)
+
 }

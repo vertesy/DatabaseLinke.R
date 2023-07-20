@@ -23,6 +23,7 @@ require('Stringendo')
 
 # Setup ------------------------
 (PackageName = 	"DatabaseLinke.R")
+package.version = "1.6.0"
 setwd("~/GitHub/Packages/")
 
 RepositoryDir = kollapse("~/GitHub/Packages/", PackageName, "/")
@@ -40,9 +41,9 @@ DESCRIPTION <- list("Title" = "DatabaseLinke.R – Parse links to databases from
     to genomics related and other websites for R. Useful when you want to explore
     e.g.: the function of a set of differentially expressed genes."
     , "License" = "GPL-3 + file LICENSE"
-    , "Version" = "1.5.2"
+    , "Version" = package.version
     , "Packaged" =  Sys.time()
-    , "Repository" =  "CRAN"
+    # , "Repository" =  "CRAN"
     # , "Imports" = "Stringendo, stats, utils"
     , "Imports" = "ReadWriter, stats, utils"
     # , "Suggests" = ""
@@ -78,7 +79,14 @@ file.copy(from = Package_FnP, to = BackupOldFile, overwrite = TRUE)
 setwd(RepositoryDir)
 getwd()
 document()
+warnings()
 
+{
+  "update cff version"
+  citpath <- paste0(RepositoryDir, 'CITATION.cff')
+  xfun::gsub_file(file = citpath, perl = T
+                  , "^version: v.+", paste0("version: v", package.version))
+}
 
 # Install your package ------------------------------------------------
 # # setwd(RepositoryDir)

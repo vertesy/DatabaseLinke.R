@@ -2,8 +2,14 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{link_ensembl_zebra}
 \alias{link_ensembl_zebra}
-\title{link_ensembl_zebra}
+\title{Zebrafish Ensembl Link Generator}
 \usage{
+link_ensembl_zebra(
+  vector_of_gene_symbols,
+  writeOut = b.dbl.writeOut,
+  Open = b.dbl.Open
+)
+
 link_ensembl_zebra(
   vector_of_gene_symbols,
   writeOut = b.dbl.writeOut,
@@ -11,15 +17,20 @@ link_ensembl_zebra(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A vector containing gene symbols to be linked.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A boolean flag indicating whether to write out the output or not. Default is the value of \code{b.dbl.writeOut}.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A boolean flag indicating whether to open the links. Default is the value of \code{b.dbl.Open}.}
 }
 \description{
-Parse the latest ensembl (GRC38) links to your list of gene symbols.
+Generates the latest Ensembl (GRC38) URLs for a given list of zebrafish gene symbols.
+
+This function generates the latest Zebrafish Ensembl (GRC38) links for a list of gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_ensembl_zebra(geneSymbols); link_ensembl_zebra(geneSymbols, Open = TRUE)
+
+geneSymbols = c('Sox2', 'Actb'); link_ensembl_zebra(geneSymbols); link_ensembl_zebra(geneSymbols, Open = TRUE)
+
 }

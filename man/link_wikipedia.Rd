@@ -11,15 +11,16 @@ link_wikipedia(
 )
 }
 \arguments{
-\item{vector_of_gene_symbols}{PARAM_DESCRIPTION}
+\item{vector_of_gene_symbols}{A character vector of gene symbols for which links should be created.}
 
-\item{writeOut}{PARAM_DESCRIPTION, Default: b.dbl.writeOut}
+\item{writeOut}{A boolean indicating whether to write out the commands or not. Default is determined by b.dbl.writeOut.}
 
-\item{Open}{PARAM_DESCRIPTION, Default: b.dbl.Open}
+\item{Open}{A boolean indicating whether to open the generated links or not. Default is determined by b.dbl.Open.}
 }
 \description{
-Parse wikipedia search query links to your list of gene symbols.
+Generates Wikipedia search query links based on a given list of gene symbols.
 }
 \examples{
 geneSymbols = c('Sox2', 'Actb'); link_wikipedia(geneSymbols); link_wikipedia(geneSymbols, Open = TRUE)
+
 }
