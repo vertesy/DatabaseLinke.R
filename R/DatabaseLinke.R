@@ -441,9 +441,11 @@ link_HGNC = qHGNC
 # _________________________________________________________________________________________________
 #' @title link_wormbase
 #'
-#' @description Parses Wormbase database links for a provided list of gene symbols.
-#' @param vector_of_gene_symbols A character vector of gene symbols to generate Wormbase links.
-#' @param writeOut, Open See qHGNC.
+#' @description Generate Wormbase database links for a list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols for which to generate Wormbase links.
+#' @param wormbase_search_prefix The base URL for Wormbase search.
+#' @param writeOut A logical indicating whether to write the generated links to a file, default: FALSE.
+#' @param Open A logical indicating whether to open the generated links in a web browser, default: TRUE.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_wormbase(geneSymbols); link_wormbase(geneSymbols, Open = TRUE)
 #'
 #' @export
@@ -461,9 +463,12 @@ link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Ope
 # _________________________________________________________________________________________________
 #' @title link_MGI.JAX
 #'
-#' @description Parses MGI JAX mouse genomics links for a provided list of gene symbols.
-#' @param vector_of_gene_symbols A character vector of gene symbols to generate MGI JAX links.
-#' @param writeOut, Open See qHGNC.
+#' @description Generate MGI JAX mouse genomics search query links for a list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols for which to generate MGI JAX links.
+#' @param MGI_search_prefix The base URL for MGI JAX search.
+#' @param MGI_search_suffix The suffix for MGI JAX search.
+#' @param writeOut A logical indicating whether to write the generated links to a file, default: FALSE.
+#' @param Open A logical indicating whether to open the generated links in a web browser, default: TRUE.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_MGI.JAX(geneSymbols); link_MGI.JAX(geneSymbols, Open = TRUE)
 #'
 #' @export
@@ -478,15 +483,16 @@ link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
 
 
 # _________________________________________________________________________________________________
-#' link_SNPedia_clip2clip
+#' @title link_SNPedia_clip2clip
 #'
-#' @param rdIDs  Should be row-by-row list of  rsID's from an Excel column
-#' @param searchQueryPrefix snpedia search query link base
-#' @param as.MarkDownLink  return as Excel link, Def: TRUE
-#' @param as.MarkDownLink  return as Markdown link, Def: FALSE
+#' @description Generate SNPedia links from a list of rsIDs copied from an Excel column.
+#' @param rdIDs A list of rsIDs from an Excel column.
+#' @param searchQueryPrefix The base URL for SNPedia search, default: 'https://www.snpedia.com/index.php/'.
+#' @param as.ExcelLink A logical indicating whether to format the links as Excel links, default: TRUE.
+#' @param as.MarkDownLink A logical indicating whether to format the links as Markdown links, default: FALSE.
+#' @examples link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl(header=F))
+#'
 #' @export
-#' @examples link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl( header=F)
-
 link_SNPedia_clip2clip <- function(rdIDs = clipr::read_clip_tbl( header=F)
                                    , searchQueryPrefix = 'https://www.snpedia.com/index.php/'
                                    , as.ExcelLink = T
