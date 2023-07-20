@@ -1,4 +1,4 @@
-######################################################################
+  ######################################################################
 # Parse links to databases from your list of gene symbols
 ######################################################################
 # source('~/GitHub/Packages/DatabaseLinke.R/DatabaseLinke.R')
@@ -30,18 +30,81 @@ utils::globalVariables(c(
 
 
 # _________________________________________________________________________________________________
-#' @title openURLs.1by1
-#' @description Open links with ~1 second delay. Necessary for slower computers and not to trigger the "robot" blocker of search engines (where you will pass your commands).
-#' @param links PARAM_DESCRIPTION
-#' @param wait PARAM_DESCRIPTION, Default: 1
-#' @examples geneSymbols = c('Sox2', 'Actb'); openURLs.1by1(geneSymbols)
+#' @title Open URLs One by One
+#'
+#' @description This function opens provided links sequentially with an optional delay between each.
+#' This can be useful for slower computers and to avoid triggering anti-robot measures in search engines.
+#' @param links A vector of URLs to be opened sequentially.
+#' @param wait Delay in seconds between opening each URL. By default, it is set to 1 second.
+#' @examples
+#' geneSymbols = c('Sox2', 'Actb')
+#' openURLsOneByOne(geneSymbols)
+#'
 #' @export
-openURLs.1by1 <- function(links, wait=1) { # Open links with ~1 second delay. Necessary for slower computers and not to trigger the "robot" blocker of search engines (where you will pass your commands).
+openURLs.1by1 <- function(links, wait=1) {
   for (link in links) {
     if (wait) Sys.sleep(runif(1)+.5)
     browseURL(link)
   }
 }
+
+# _________________________________________________________________________________________________
+#' @title GeneCards Link Generator
+#'
+#' @description Generates GeneCards URLs for a given list of gene symbols.
+#' @param vector_of_gene_symbols A character vector containing gene symbols.
+#' @param writeOut A logical parameter determining if URLs should be written out to a bash script. Default is b.dbl.writeOut.
+#' @param Open A logical parameter determining if URLs should be opened immediately. Default is b.dbl.Open.
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_GeneCards(geneSymbols); link_GeneCards(geneSymbols, Open = TRUE)
+#'
+#' @export
+link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
+  links = paste0(GeneCards, vector_of_gene_symbols)
+  if (writeOut) {
+    bash_commands = paste0("open ", links)
+    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+  } else if (Open) { openURLs.1by1(links) } else { return(links) }
+}
+
+# _________________________________________________________________________________________________
+#' @title Zebrafish Ensembl Link Generator
+#'
+#' @description Generates the latest Ensembl (GRC38) URLs for a given list of zebrafish gene symbols.
+#' @param vector_of_gene_symbols A character vector containing zebrafish gene symbols.
+#' @param writeOut A logical parameter determining if URLs should be written out to a bash script. Default is b.dbl.writeOut.
+#' @param Open A logical parameter determining if URLs should be opened immediately. Default is b.dbl.Open.
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl_zebra(geneSymbols); link_ensembl_zebra(geneSymbols, Open = TRUE)
+#'
+#' @export
+link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
+  links = paste0(grc_Zebra[1], vector_of_gene_symbols, grc_Zebra[2])
+  if (writeOut) {
+    bash_commands = paste0("open ", links)
+    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+  } else if (Open) { openURLs.1by1(links) } else { return(links) }
+}
+
+# _________________________________________________________________________________________________
+#' @title Mouse Ensembl Link Generator
+#'
+#' @description Generates the latest Ensembl (GRC38) URLs for a given list of mouse gene symbols.
+#' @param vector_of_gene_symbols A character vector containing mouse gene symbols.
+#' @param writeOut A logical parameter determining if URLs should be written out to a bash script. Default is b.dbl.writeOut.
+#' @param Open A logical parameter determining if URLs should be opened immediately. Default is b.dbl.Open.
+#' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
+#'
+#' @export
+link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
+  links = paste0(grc_mm38[1], vector_of_gene_symbols, grc_mm38[2])
+  if (writeOut) {
+    bash_commands = paste0("open ", links)
+    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+  } else if (Open) { openURLs.1by1(links) } else { return(links) }
+}
+
 
 
 # _________________________________________________________________________________________________
@@ -384,23 +447,23 @@ qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene
 
 link_HGNC = qHGNC
 
-# Quick lookup versioin
-#' @title qHGNC
-#' @description Parse HGNC links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: FALSE
-#' @param Open PARAM_DESCRIPTION, Default: TRUE
-#' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
-#' @export
-qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
-                  , writeOut = FALSE, Open = TRUE) {
-  links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
-  if (writeOut) {
-    bash_commands = paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
-  } else if (Open) { openURLs.1by1(links) } else { return(links) }
-}
+# # Quick lookup versioin
+# #' @title qHGNC
+# #' @description Parse HGNC links to your list of gene symbols.
+# #' @param vector_of_gene_symbols PARAM_DESCRIPTION
+# #' @param writeOut PARAM_DESCRIPTION, Default: FALSE
+# #' @param Open PARAM_DESCRIPTION, Default: TRUE
+# #' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
+# #' @export
+# qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
+#                   , writeOut = FALSE, Open = TRUE) {
+#   links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
+#   if (writeOut) {
+#     bash_commands = paste0("open ", links)
+#     ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
+#     ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+#   } else if (Open) { openURLs.1by1(links) } else { return(links) }
+# }
 
 # _________________________________________________________________________________________________
 
@@ -441,11 +504,123 @@ link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
 }
 
 
-#  ------------------------------------------------------------------------
-#  ------------------------------------------------------------------------
-#  ------------------------------------------------------------------------
-#  ------------------------------------------------------------------------
-#  ------------------------------------------------------------------------
+# _________________________________________________________________________________________________
+#' link_SNPedia_clip2clip
+#'
+#' @param rdIDs  Should be row-by-row list of  rsID's from an Excel column
+#' @param searchQueryPrefix snpedia search query link base
+#' @param as.MarkDownLink  return as Excel link, Def: TRUE
+#' @param as.MarkDownLink  return as Markdown link, Def: FALSE
+#' @export
+#' @examples link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl( header=F)
+
+link_SNPedia_clip2clip <- function(rdIDs = clipr::read_clip_tbl( header=F)
+                                   , searchQueryPrefix = 'https://www.snpedia.com/index.php/'
+                                   , as.ExcelLink = T
+                                   , as.MarkDownLink = F
+) {
+
+  v.rdIDs <- tibble::deframe(rdIDs)
+  links <- paste0(searchQueryPrefix, v.rdIDs)
+  tbl_link <- as.tibble(links)
+  print(head(tbl_link))
+  colnames(tbl_link) <- NULL
+  if (as.ExcelLink) {
+    tbl_link <- FormatAsExcelLink(site_name = v.rdIDs, site_url = links)
+    print("Now paste into to Execl, or google sheets")
+  } else  if (as.MarkDownLink) {
+    tbl_link <- paste0('[', v.rdIDs , '](', links , ')')
+    print("Now  paste into to typora (then text edit, then Execl, then google docs)")
+  }
+
+  clipr::write_clip(tbl_link)
+
+}
+# link_SNPedia_clip2clip()
+
+
+
+# _________________________________________________________________________________________________
+#' link_Franklin_clip2clip > Databaselnker
+#'
+#' @param coordinates Coordinates in input format 5:35162876	C/T  OR 16:7164219	T/G
+#' @param searchQueryPrefix Genoox Franklin search query link base
+#' @param as.ExcelLink  return as Excel link, Def: TRUE
+#' @export
+#' @examples link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl( header=F) )
+
+link_Franklin_clip2clip <- function(coordinates = clipr::read_clip_tbl( header=F)
+                                    , searchQueryPrefix = 'https://franklin.genoox.com/clinical-db/variant/snp/'
+                                    , as.ExcelLink = T
+) {
+  stopifnot(ncol(coordinates) == 2)
+  Coord <-
+    if (idim(coordinates)[2]==2) {
+      coordinates <- paste(coordinates[,1], coordinates[,2], sep = ":")
+    } else  tibble::deframe(coordinates)
+
+  Coord.Formattes <- paste0('chr', gsub(x = Coord, pattern = ':', replacement = '-'))
+  Coord.Formattes <- gsub(x = Coord.Formattes, pattern = '/', replacement = '-')
+
+  links <- paste0(searchQueryPrefix, Coord.Formattes)
+  tbl_link <- as.tibble(links)
+  print(head(tbl_link))
+  colnames(tbl_link) <- NULL
+  if (as.ExcelLink) {
+    tbl_link <- FormatAsExcelLink(site_name = tibble::deframe(Coord.Formattes), site_url = links)
+    print("Now paste into to Execl, or google sheets")
+  }
+  clipr::write_clip(tbl_link)
+
+}
+# link_Franklin_clip2clip()
+
+
+
+# _________________________________________________________________________________________________
+#' link_VarSome_clip2clip
+#'
+#' @param rdIDs  Should be row-by-row list of  rsID's from an Excel column
+#' @param searchQueryPrefix Varsome search query link base
+#' @param as.MarkDownLink  return as Excel link, Def: TRUE
+#' @param as.MarkDownLink  return as Markdown link, Def: FALSE
+#' @export
+#' @examples link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl( header=F) # "https://varsome.com/variant/hg38/rs12970134?annotation-mode=germline"
+
+link_VarSome_clip2clip <- function(rdIDs = clipr::read_clip_tbl( header=F)
+                                   , searchQueryPrefix = 'https://varsome.com/variant/'
+                                   , hg = "hg19"
+                                   , suffix = "?annotation-mode=germline"
+                                   , as.ExcelLink = T
+                                   , as.MarkDownLink = F
+) {
+
+  "https://varsome.com/variant/hg38/rs12970134?annotation-mode=germline"
+  prefix_total = paste0(searchQueryPrefix, hg, "/")
+
+  v.rdIDs <- tibble::deframe(rdIDs)
+  links <- paste0(prefix_total, v.rdIDs, suffix)
+  tbl_link <- as.tibble(links)
+  print(head(tbl_link))
+  colnames(tbl_link) <- NULL
+  if (as.ExcelLink) {
+    tbl_link <- FormatAsExcelLink(site_name = paste('VS', v.rdIDs)
+                                  , site_url = links)
+    print("Now paste into to Execl, or google sheets")
+  } else  if (as.MarkDownLink) {
+    tbl_link <- paste0('[', v.rdIDs , '](', links , ')')
+    print("Now  paste into to typora (then text edit, then Execl, then google docs)")
+  }
+
+  clipr::write_clip(tbl_link)
+
+}
+# link_VarSome_clip2clip()
+
+
+
+# _________________________________________________________________________________________________
+
 
 # old
 # uniprot_mouse =c('http://www.uniprot.org/uniprot/?query=organism%3A"Mus+musculus+[10090]"+',"&sort=score")
