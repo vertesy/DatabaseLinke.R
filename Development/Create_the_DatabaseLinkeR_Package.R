@@ -90,7 +90,7 @@ warnings()
 
 # Install your package ------------------------------------------------
 # # setwd(RepositoryDir)
-install(RepositoryDir)
+install(RepositoryDir, upgrade = F)
 # require("DatabaseLinke.R")
 # source("https://github.com/vertesy/DatabaseLinke.R/blob/master/R/DatabaseLinke.Setup.Global.Variables.R")
 
