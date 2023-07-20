@@ -252,12 +252,14 @@ link_String <- function(vector_of_gene_symbols # Parse STRING protein interactio
 
 # _________________________________________________________________________________________________
 #' @title qString
-#' @description Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param organism PARAM_DESCRIPTION, Default: 'human'
-#' @param writeOut PARAM_DESCRIPTION, Default: F
-#' @param Open PARAM_DESCRIPTION, Default: TRUE
+#'
+#' @description Generates links to the STRING protein interaction database based on a given list of gene symbols. The function supports different organisms such as mice, humans, or "NA" for no specific organism.
+#' @param vector_of_gene_symbols A character vector of gene symbols for which links should be created.
+#' @param organism A string indicating the organism of interest. Default is "human".
+#' @param writeOut A boolean indicating whether to write out the commands or not. Default is FALSE.
+#' @param Open A boolean indicating whether to open the generated links or not. Default is TRUE.
 #' @examples geneSymbols = c('Sox2', 'Actb'); qString(geneSymbols); qString(geneSymbols, Open = TRUE)
+#'
 #' @export
 qString <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
                     , organism="human", writeOut =F, Open = TRUE) {
@@ -276,14 +278,15 @@ qString <- function(vector_of_gene_symbols # Parse STRING protein interaction da
 
 
 # _________________________________________________________________________________________________
-
 #' @title link_pubmed
-#' @description Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param additional_terms PARAM_DESCRIPTION, Default: ''
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#'
+#' @description Generates links to the PUBMED database based on a given list of gene symbols and additional search terms.
+#' @param vector_of_gene_symbols A character vector of gene symbols for which links should be created.
+#' @param additional_terms A character vector of additional terms to be included in the search query. Default is an empty string.
+#' @param writeOut A boolean indicating whether to write out the commands or not. Default is determined by b.dbl.writeOut.
+#' @param Open A boolean indicating whether to open the generated links or not. Default is determined by b.dbl.Open.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_pubmed(geneSymbols); link_pubmed(geneSymbols, Open = TRUE)
+#'
 #' @export
 link_pubmed <- function(vector_of_gene_symbols  # Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
                         , additional_terms = "", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
@@ -297,13 +300,14 @@ link_pubmed <- function(vector_of_gene_symbols  # Parse PUBMED database links to
 
 
 # _________________________________________________________________________________________________
-
 #' @title link_wikipedia
-#' @description Parse wikipedia search query links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#'
+#' @description Generates Wikipedia search query links based on a given list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols for which links should be created.
+#' @param writeOut A boolean indicating whether to write out the commands or not. Default is determined by b.dbl.writeOut.
+#' @param Open A boolean indicating whether to open the generated links or not. Default is determined by b.dbl.Open.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_wikipedia(geneSymbols); link_wikipedia(geneSymbols, Open = TRUE)
+#'
 #' @export
 link_wikipedia <- function(vector_of_gene_symbols  # Parse wikipedia search query links to your list of gene symbols.
                            , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
@@ -316,20 +320,21 @@ link_wikipedia <- function(vector_of_gene_symbols  # Parse wikipedia search quer
 }
 
 # _________________________________________________________________________________________________
-# google="http://www.google.com/search?as_q="
-
 #' @title link_google
-#' @description Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See updated google and bing services in [CodeAndRoll.R](https://vertesy.github.io/CodeAndRoll.R).
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param prefix PARAM_DESCRIPTION, Default: ''
-#' @param google  google search string, "http://www.google.com/search?as_q = "
-#' @param suffix PARAM_DESCRIPTION, Default: ''
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
-#' @param sleep PARAM_DESCRIPTION, Default: 1
+#'
+#' @description Parses Google search query links for a provided list of gene symbols.
+#'              The "prefix" and "suffix" will be searched for together with each gene (e.g., "Human ID4 neurons").
+#'              Uses google="http://www.google.com/search?as_q=".
+#' @param vector_of_gene_symbols A character vector of gene symbols to generate Google search links.
+#' @param google A Google search URL string, default: "http://www.google.com/search?as_q = ".
+#' @param prefix A string to be added before each gene symbol in the search query, default: ''.
+#' @param suffix A string to be added after each gene symbol in the search query, default: ''.
+#' @param writeOut A boolean indicating whether to write the bash commands to file, default: b.dbl.writeOut.
+#' @param Open A boolean indicating whether to open the search links, default: b.dbl.Open.
+#' @param sleep The sleep interval in seconds between opening search links, default: 1.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_google(geneSymbols); link_google(geneSymbols, Open = TRUE)
+#'
 #' @export
-
 link_google <- function(vector_of_gene_symbols #  Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
                         , google = "http://www.google.com/search?as_q = ", prefix = "", suffix = ""
                         , writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
@@ -368,18 +373,17 @@ function (vector_of_gene_symbols, prefix = "", suffix = "", writeOut = b.dbl.wri
 # _________________________________________________________________________________________________
 #' @title link_bing
 #'
-#' @param vector_of_gene_symbols
-#' @param bing
-#' @param prefix
-#' @param suffix
-#' @param writeOut
-#' @param Open
-#' @param sleep
+#' @description Parses Bing search query links for a provided list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols to generate Bing search links.
+#' @param bing A Bing search URL string, default: "https://www.bing.com/search?q = ".
+#' @param prefix A string to be added before each gene symbol in the search query, default: ''.
+#' @param suffix A string to be added after each gene symbol in the search query, default: ''.
+#' @param writeOut A boolean indicating whether to write the bash commands to file, default: b.dbl.writeOut.
+#' @param Open A boolean indicating whether to open the search links, default: b.dbl.Open.
+#' @param sleep The sleep interval in seconds between opening search links, default: 1.
+#' @examples link_bing("ACTB")
 #'
 #' @export
-#'
-#' @examples link_bing("ACTB")
-
 link_bing <- function(vector_of_gene_symbols #  Parse bing search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
                       , bing = "https://www.bing.com/search?q = ", prefix = "", suffix = ""
                       , writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
@@ -394,12 +398,14 @@ link_bing <- function(vector_of_gene_symbols #  Parse bing search query links to
 
 
 # _________________________________________________________________________________________________
-#' @title qHGNC
-#' @description Parse HGNC links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @title HGNC link generator and web lookup
+#'
+#' @description Parses HGNC links for a provided list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols to generate HGNC links.
+#' @param writeOut A boolean indicating whether to write the bash commands to file, default: FALSE.
+#' @param Open A boolean indicating whether to open the HGNC links, default: TRUE.
 #' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = FALSE)
+#'
 #' @export
 qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
                   , HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search="
@@ -433,13 +439,13 @@ link_HGNC = qHGNC
 # }
 
 # _________________________________________________________________________________________________
-
 #' @title link_wormbase
-#' @description Parse wormbase database links to your list of gene symbols..
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#'
+#' @description Parses Wormbase database links for a provided list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols to generate Wormbase links.
+#' @param writeOut, Open See qHGNC.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_wormbase(geneSymbols); link_wormbase(geneSymbols, Open = TRUE)
+#'
 #' @export
 link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse wormbase database links to your list of gene symbols..
   links = paste0( wormbase_search_prefix, vector_of_gene_symbols)
@@ -453,13 +459,13 @@ link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Ope
 
 
 # _________________________________________________________________________________________________
-
 #' @title link_MGI.JAX
-#' @description Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#'
+#' @description Parses MGI JAX mouse genomics links for a provided list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols to generate MGI JAX links.
+#' @param writeOut, Open See qHGNC.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_MGI.JAX(geneSymbols); link_MGI.JAX(geneSymbols, Open = TRUE)
+#'
 #' @export
 link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
   links = paste0( MGI_search_prefix, vector_of_gene_symbols, MGI_search_suffix)
