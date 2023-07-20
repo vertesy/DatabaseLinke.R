@@ -144,12 +144,14 @@ link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
 }
 
 # _________________________________________________________________________________________________
-#' @title link_ensembl.grc37
-#' @description Parse ensembl GRC37 links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @title Parse Ensembl GRC37 links
+#'
+#' @description This function generates Ensembl GRC37 links for a list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols.
+#' @param writeOut A logical indicating whether to write out the links. Default is b.dbl.writeOut.
+#' @param Open A logical indicating whether to open the links. Default is b.dbl.Open.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl.grc37(geneSymbols); link_ensembl.grc37(geneSymbols, Open = TRUE)
+#'
 #' @export
 link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse ensembl GRC37 links to your list of gene symbols.
   links = paste0(grc37[1], vector_of_gene_symbols, grc37[2])
@@ -162,12 +164,14 @@ link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
 
 
 # _________________________________________________________________________________________________
-#' @title link_uniprot_mice
-#' @description Parse the latest UNIPROT links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: F
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @title Parse UNIPROT Links for Mice Genes
+#'
+#' @description This function generates UNIPROT links for a list of mouse gene symbols.
+#' @param vector_of_gene_symbols A character vector of mouse gene symbols.
+#' @param writeOut A logical indicating whether to write out the links. Default is FALSE.
+#' @param Open A logical indicating whether to open the links. Default is b.dbl.Open.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_uniprot_mice(geneSymbols); link_uniprot_mice(geneSymbols, Open = TRUE)
+#'
 #' @export
 link_uniprot_mice <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links = paste0(uniprot_mouse[1], vector_of_gene_symbols, uniprot_mouse[2] )
@@ -180,12 +184,15 @@ link_uniprot_mice <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl
 lll='http://www.uniprot.org/uniprot/?query=Eef1d+Mouse+reviewed%3Ayes+&sort=score'
 
 
-#' @title link_uniprot_human
-#' @description Parse the latest UNIPROT links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: F
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+# _________________________________________________________________________________________________
+#' @title Parse UNIPROT Links for Human Genes
+#'
+#' @description This function generates UNIPROT links for a list of human gene symbols.
+#' @param vector_of_gene_symbols A character vector of human gene symbols.
+#' @param writeOut A logical indicating whether to write out the links. Default is FALSE.
+#' @param Open A logical indicating whether to open the links. Default is b.dbl.Open.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_uniprot_human(geneSymbols); link_uniprot_human(geneSymbols, Open = TRUE)
+#'
 #' @export
 link_uniprot_human <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links = paste0( uniprot_human[1], vector_of_gene_symbols, uniprot_human[2] )
@@ -196,12 +203,15 @@ link_uniprot_human <- function(vector_of_gene_symbols, writeOut = F, Open = b.db
   } else if (Open) { openURLs.1by1(links) } else { return(links) }
 }
 
-#' @title link_uniprot_zebrafish
-#' @description Parse the latest UNIPROT links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: F
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+# _________________________________________________________________________________________________
+#' @title Parse UNIPROT Links for Zebrafish Genes
+#'
+#' @description This function generates UNIPROT links for a list of zebrafish gene symbols.
+#' @param vector_of_gene_symbols A character vector of zebrafish gene symbols.
+#' @param writeOut A logical indicating whether to write out the links. Default is FALSE.
+#' @param Open A logical indicating whether to open the links. Default is b.dbl.Open.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_uniprot_zebrafish(geneSymbols); link_uniprot_zebrafish(geneSymbols, Open = TRUE)
+#'
 #' @export
 link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links = paste0( uniprot_zebra[1], vector_of_gene_symbols, uniprot_zebra[2] )
@@ -214,14 +224,17 @@ link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = F, Open = 
 
 
 # _________________________________________________________________________________________________
-#' @title link_String
-#' @description Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param organism PARAM_DESCRIPTION, Default: 'human'
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @title Parse STRING Database Links
+#'
+#' @description This function generates links to the STRING protein interaction database for a list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols.
+#' @param organism A string indicating the organism. Can be 'mouse', 'human' or 'elegans'. Default is 'human'.
+#' @param writeOut A logical indicating whether to write out the links. Default is b.dbl.writeOut.
+#' @param Open A logical indicating whether to open the links. Default is b.dbl.Open.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_String(geneSymbols); link_String(geneSymbols, Open = TRUE)
+#'
 #' @export
+
 link_String <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
                         , organism="human", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   suffix = if (is.na(organism)) { "" }
