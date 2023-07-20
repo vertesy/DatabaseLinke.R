@@ -105,33 +105,15 @@ link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut,
   } else if (Open) { openURLs.1by1(links) } else { return(links) }
 }
 
-
-
 # _________________________________________________________________________________________________
-#' @title link_GeneCards
-#' @description Parse GeneCards links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
-#' @examples geneSymbols = c('Sox2', 'Actb'); link_GeneCards(geneSymbols); link_GeneCards(geneSymbols, Open = TRUE)
-#' @export
-link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse GeneCards links to your list of gene symbols.
-  links = paste0(GeneCards, vector_of_gene_symbols)
-  if (writeOut) {
-    bash_commands = paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
-  } else if (Open) { openURLs.1by1(links) } else { return(links) }
-}
-
-# _________________________________________________________________________________________________
-
-#' @title link_ensembl_zebra
-#' @description Parse the latest ensembl (GRC38) links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+#' @title Generate Zebrafish Ensembl Links
+#'
+#' @description This function generates the latest Zebrafish Ensembl (GRC38) links for a list of gene symbols.
+#' @param vector_of_gene_symbols A vector containing gene symbols to be linked.
+#' @param writeOut A boolean flag indicating whether to write out the output or not. Default is the value of `b.dbl.writeOut`.
+#' @param Open A boolean flag indicating whether to open the links. Default is the value of `b.dbl.Open`.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl_zebra(geneSymbols); link_ensembl_zebra(geneSymbols, Open = TRUE)
+#'
 #' @export
 link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links = paste0(grc_Zebra[1], vector_of_gene_symbols, grc_Zebra[2])
@@ -142,46 +124,17 @@ link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
   } else if (Open) { openURLs.1by1(links) } else { return(links) }
 }
 
-#' @title link_ensembl_mice
-#' @description Parse the latest ensembl (GRC38) links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
-#' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
-#' @export
-link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
-  links = paste0(grc_mm38[1], vector_of_gene_symbols, grc_mm38[2])
-  if (writeOut) {
-    bash_commands = paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
-  } else if (Open) { openURLs.1by1(links) } else { return(links) }
-}
-
-#' @title link_ensembl_mice
-#' @description Parse the latest ensembl (GRC38) links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
-#' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
-#' @export
-link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
-  links = paste0(grc_mm38[1], vector_of_gene_symbols, grc_mm38[2])
-  if (writeOut) {
-    bash_commands = paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
-  } else if (Open) { openURLs.1by1(links) } else { return(links) }
-}
-
-#' @title link_ensembl
-#' @description Parse the latest ensembl (GRC38) links to your list of gene symbols.
-#' @param vector_of_gene_symbols PARAM_DESCRIPTION
-#' @param writeOut PARAM_DESCRIPTION, Default: b.dbl.writeOut
-#' @param Open PARAM_DESCRIPTION, Default: b.dbl.Open
+# _________________________________________________________________________________________________
+#' @title Generate Ensembl Links
+#'
+#' @description This function generates the latest Ensembl (GRC38) links for a list of gene symbols.
+#' @param vector_of_gene_symbols A vector containing gene symbols to be linked.
+#' @param writeOut A boolean flag indicating whether to write out the output or not. Default is the value of `b.dbl.writeOut`.
+#' @param Open A boolean flag indicating whether to open the links. Default is the value of `b.dbl.Open`.
 #' @examples geneSymbols = c('Sox2', 'Actb'); link_ensembl(geneSymbols); link_ensembl(geneSymbols, Open = TRUE)
+#'
 #' @export
-link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
+link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links = paste0(ensembl_multispecies[1], vector_of_gene_symbols, ensembl_multispecies[2])
   if (writeOut) {
     bash_commands = paste0("open ", links)
@@ -190,6 +143,7 @@ link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
   } else if (Open) { openURLs.1by1(links) } else { return(links) }
 }
 
+# _________________________________________________________________________________________________
 #' @title link_ensembl.grc37
 #' @description Parse ensembl GRC37 links to your list of gene symbols.
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
@@ -206,8 +160,8 @@ link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
   } else if (Open) { openURLs.1by1(links) } else { return(links) }
 }
 
-## _________________________________________________________________________________________________
 
+# _________________________________________________________________________________________________
 #' @title link_uniprot_mice
 #' @description Parse the latest UNIPROT links to your list of gene symbols.
 #' @param vector_of_gene_symbols PARAM_DESCRIPTION
