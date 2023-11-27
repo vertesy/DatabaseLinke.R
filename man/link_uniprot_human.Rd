@@ -4,7 +4,7 @@
 \alias{link_uniprot_human}
 \title{Parse UNIPROT Links for Human Genes}
 \usage{
-link_uniprot_human(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open)
+link_uniprot_human(vector_of_gene_symbols, writeOut = FALSE, Open = b.dbl.Open)
 }
 \arguments{
 \item{vector_of_gene_symbols}{A character vector of human gene symbols.}

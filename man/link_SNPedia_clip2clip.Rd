@@ -5,10 +5,10 @@
 \title{link_SNPedia_clip2clip}
 \usage{
 link_SNPedia_clip2clip(
-  rdIDs = clipr::read_clip_tbl(header = F),
+  rdIDs = clipr::read_clip_tbl(header = FALSE),
   searchQueryPrefix = "https://www.snpedia.com/index.php/",
-  as.ExcelLink = T,
-  as.MarkDownLink = F
+  as.ExcelLink = TRUE,
+  as.MarkDownLink = FALSE
 )
 }
 \arguments{
@@ -24,6 +24,6 @@ link_SNPedia_clip2clip(
 Generate SNPedia links from a list of rsIDs copied from an Excel column.
 }
 \examples{
-link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl(header = F))
+link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl(header = FALSE))
 
 }

@@ -5,12 +5,12 @@
 \title{link_VarSome_clip2clip}
 \usage{
 link_VarSome_clip2clip(
-  rdIDs = clipr::read_clip_tbl(header = F),
+  rdIDs = clipr::read_clip_tbl(header = FALSE),
   searchQueryPrefix = "https://varsome.com/variant/",
   hg = "hg19",
   suffix = "?annotation-mode=germline",
-  as.ExcelLink = T,
-  as.MarkDownLink = F
+  as.ExcelLink = TRUE,
+  as.MarkDownLink = FALSE
 )
 }
 \arguments{
@@ -30,6 +30,6 @@ link_VarSome_clip2clip(
 Generate VarSome links from a list of rsIDs.
 }
 \examples{
-link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl(header = F), hg = "hg38")
+link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl(header = FALSE), hg = "hg38")
 
 }

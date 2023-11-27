@@ -4,7 +4,12 @@
 \alias{qString}
 \title{qString}
 \usage{
-qString(vector_of_gene_symbols, organism = "human", writeOut = F, Open = TRUE)
+qString(
+  vector_of_gene_symbols,
+  organism = "human",
+  writeOut = FALSE,
+  Open = TRUE
+)
 }
 \arguments{
 \item{vector_of_gene_symbols}{A character vector of gene symbols for which links should be created.}

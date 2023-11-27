@@ -5,9 +5,9 @@
 \title{link_Franklin_clip2clip}
 \usage{
 link_Franklin_clip2clip(
-  coordinates = clipr::read_clip_tbl(header = F),
+  coordinates = clipr::read_clip_tbl(header = FALSE),
   searchQueryPrefix = "https://franklin.genoox.com/clinical-db/variant/snp/",
-  as.ExcelLink = T
+  as.ExcelLink = TRUE
 )
 }
 \arguments{
@@ -21,6 +21,6 @@ link_Franklin_clip2clip(
 Generate Franklin (Genoox) links from a list of coordinates.
 }
 \examples{
-link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl(header = F))
+link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl(header = FALSE))
 
 }

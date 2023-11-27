@@ -4,7 +4,11 @@
 \alias{link_uniprot_zebrafish}
 \title{Parse UNIPROT Links for Zebrafish Genes}
 \usage{
-link_uniprot_zebrafish(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open)
+link_uniprot_zebrafish(
+  vector_of_gene_symbols,
+  writeOut = FALSE,
+  Open = b.dbl.Open
+)
 }
 \arguments{
 \item{vector_of_gene_symbols}{A character vector of zebrafish gene symbols.}

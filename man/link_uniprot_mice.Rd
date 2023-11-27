@@ -4,7 +4,7 @@
 \alias{link_uniprot_mice}
 \title{Parse UNIPROT Links for Mice Genes}
 \usage{
-link_uniprot_mice(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open)
+link_uniprot_mice(vector_of_gene_symbols, writeOut = FALSE, Open = b.dbl.Open)
 }
 \arguments{
 \item{vector_of_gene_symbols}{A character vector of mouse gene symbols.}
