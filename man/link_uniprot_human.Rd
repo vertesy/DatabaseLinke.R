@@ -17,6 +17,8 @@ link_uniprot_human(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open)
 This function generates UNIPROT links for a list of human gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_uniprot_human(geneSymbols); link_uniprot_human(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_uniprot_human(geneSymbols)
+link_uniprot_human(geneSymbols, Open = TRUE)
 
 }

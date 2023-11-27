@@ -29,8 +29,12 @@ Generates the latest Ensembl (GRC38) URLs for a given list of zebrafish gene sym
 This function generates the latest Zebrafish Ensembl (GRC38) links for a list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_ensembl_zebra(geneSymbols); link_ensembl_zebra(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_ensembl_zebra(geneSymbols)
+link_ensembl_zebra(geneSymbols, Open = TRUE)
 
-geneSymbols = c('Sox2', 'Actb'); link_ensembl_zebra(geneSymbols); link_ensembl_zebra(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_ensembl_zebra(geneSymbols)
+link_ensembl_zebra(geneSymbols, Open = TRUE)
 
 }

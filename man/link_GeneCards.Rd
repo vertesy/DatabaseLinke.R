@@ -21,6 +21,8 @@ link_GeneCards(
 Generates GeneCards URLs for a given list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_GeneCards(geneSymbols); link_GeneCards(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_GeneCards(geneSymbols)
+link_GeneCards(geneSymbols, Open = TRUE)
 
 }

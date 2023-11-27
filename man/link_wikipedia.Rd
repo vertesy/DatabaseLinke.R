@@ -21,6 +21,8 @@ link_wikipedia(
 Generates Wikipedia search query links based on a given list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_wikipedia(geneSymbols); link_wikipedia(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_wikipedia(geneSymbols)
+link_wikipedia(geneSymbols, Open = TRUE)
 
 }

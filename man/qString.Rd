@@ -19,6 +19,8 @@ qString(vector_of_gene_symbols, organism = "human", writeOut = F, Open = TRUE)
 Generates links to the STRING protein interaction database based on a given list of gene symbols. The function supports different organisms such as mice, humans, or "NA" for no specific organism.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); qString(geneSymbols); qString(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+qString(geneSymbols)
+qString(geneSymbols, Open = TRUE)
 
 }

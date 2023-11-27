@@ -24,6 +24,8 @@ link_pubmed(
 Generates links to the PUBMED database based on a given list of gene symbols and additional search terms.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_pubmed(geneSymbols); link_pubmed(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_pubmed(geneSymbols)
+link_pubmed(geneSymbols, Open = TRUE)
 
 }

@@ -16,7 +16,7 @@ This function opens provided links sequentially with an optional delay between e
 This can be useful for slower computers and to avoid triggering anti-robot measures in search engines.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb')
+geneSymbols <- c("Sox2", "Actb")
 openURLsOneByOne(geneSymbols)
 
 }

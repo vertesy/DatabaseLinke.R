@@ -35,6 +35,8 @@ The "prefix" and "suffix" will be searched for together with each gene (e.g., "H
 Uses google="http://www.google.com/search?as_q=".
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_google(geneSymbols); link_google(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_google(geneSymbols)
+link_google(geneSymbols, Open = TRUE)
 
 }

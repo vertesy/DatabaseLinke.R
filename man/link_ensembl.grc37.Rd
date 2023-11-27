@@ -21,6 +21,8 @@ link_ensembl.grc37(
 This function generates Ensembl GRC37 links for a list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_ensembl.grc37(geneSymbols); link_ensembl.grc37(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_ensembl.grc37(geneSymbols)
+link_ensembl.grc37(geneSymbols, Open = TRUE)
 
 }

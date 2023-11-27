@@ -23,6 +23,8 @@ link_wormbase(
 Generate Wormbase database links for a list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_wormbase(geneSymbols); link_wormbase(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_wormbase(geneSymbols)
+link_wormbase(geneSymbols, Open = TRUE)
 
 }

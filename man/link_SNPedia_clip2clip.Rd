@@ -24,6 +24,6 @@ link_SNPedia_clip2clip(
 Generate SNPedia links from a list of rsIDs copied from an Excel column.
 }
 \examples{
-link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl(header=F))
+link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl(header = F))
 
 }

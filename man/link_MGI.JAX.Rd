@@ -25,6 +25,8 @@ link_MGI.JAX(
 Generate MGI JAX mouse genomics search query links for a list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_MGI.JAX(geneSymbols); link_MGI.JAX(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_MGI.JAX(geneSymbols)
+link_MGI.JAX(geneSymbols, Open = TRUE)
 
 }

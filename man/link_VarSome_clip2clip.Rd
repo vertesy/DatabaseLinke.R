@@ -30,6 +30,6 @@ link_VarSome_clip2clip(
 Generate VarSome links from a list of rsIDs.
 }
 \examples{
-link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl(header=F), hg="hg38")
+link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl(header = F), hg = "hg38")
 
 }

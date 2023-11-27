@@ -21,6 +21,8 @@ link_ensembl(
 This function generates the latest Ensembl (GRC38) links for a list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_ensembl(geneSymbols); link_ensembl(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_ensembl(geneSymbols)
+link_ensembl(geneSymbols, Open = TRUE)
 
 }

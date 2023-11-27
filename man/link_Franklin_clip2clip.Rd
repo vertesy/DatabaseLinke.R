@@ -21,6 +21,6 @@ link_Franklin_clip2clip(
 Generate Franklin (Genoox) links from a list of coordinates.
 }
 \examples{
-link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl(header=F))
+link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl(header = F))
 
 }

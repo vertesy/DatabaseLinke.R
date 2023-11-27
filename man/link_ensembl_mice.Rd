@@ -21,6 +21,8 @@ link_ensembl_mice(
 Generates the latest Ensembl (GRC38) URLs for a given list of mouse gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_ensembl_mice(geneSymbols); link_ensembl_mice(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_ensembl_mice(geneSymbols)
+link_ensembl_mice(geneSymbols, Open = TRUE)
 
 }

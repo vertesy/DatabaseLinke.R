@@ -22,6 +22,8 @@ qHGNC(
 Parses HGNC links for a provided list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = FALSE)
+geneSymbols <- c("Sox2", "Actb")
+qHGNC(geneSymbols)
+qHGNC(geneSymbols, Open = FALSE)
 
 }

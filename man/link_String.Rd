@@ -24,6 +24,8 @@ link_String(
 This function generates links to the STRING protein interaction database for a list of gene symbols.
 }
 \examples{
-geneSymbols = c('Sox2', 'Actb'); link_String(geneSymbols); link_String(geneSymbols, Open = TRUE)
+geneSymbols <- c("Sox2", "Actb")
+link_String(geneSymbols)
+link_String(geneSymbols, Open = TRUE)
 
 }
