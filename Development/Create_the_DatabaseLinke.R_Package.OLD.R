@@ -23,7 +23,7 @@ try(dev.off(), silent = TRUE)
 
 # Setup ------------------------
 (package.name <- 	"DatabaseLinke.R")
-package.version <- "1.6.0"
+package.version <- "1.6.5"
 setwd("~/GitHub/Packages/")
 
 RepositoryDir <- paste0("~/GitHub/Packages/", package.name, "/")
@@ -35,28 +35,28 @@ dir.create(BackupDir)
 
 # devtools::use_package("vioplot")
 DESCRIPTION <- list("Title" = "DatabaseLinke.R – Parse links to databases from your list of gene symbols"
-    , "Author" = person(given = "Abel", family = "Vertesy", email = "abel.vertesy@imba.oeaw.ac.at", role =  c("aut", "cre") )
-    , "Authors@R" = 'person(given = "Abel", family = "Vertesy", email = "a.vertesy@imba.oeaw.ac.at", role =  c("aut", "cre") )'
-    , "Description" = "A set of functions to parse and open (search query) links
+                    , "Author" = person(given = "Abel", family = "Vertesy", email = "abel.vertesy@imba.oeaw.ac.at", role =  c("aut", "cre") )
+                    , "Authors@R" = 'person(given = "Abel", family = "Vertesy", email = "a.vertesy@imba.oeaw.ac.at", role =  c("aut", "cre") )'
+                    , "Description" = "A set of functions to parse and open (search query) links
     to genomics related and other websites for R. Useful when you want to explore
     e.g.: the function of a set of differentially expressed genes."
-    , "License" = "GPL-3 + file LICENSE"
-    , "Version" = package.version
-    , "Packaged" =  Sys.time()
-    # , "Repository" =  "CRAN"
-    # , "Imports" = "Stringendo, stats, utils"
-    , "Imports" = "ReadWriter, stats, utils"
-    # , "Suggests" = ""
-    , "BugReports"= "https://github.com/vertesy/DatabaseLinke.R/issues"
+                    , "License" = "GPL-3 + file LICENSE"
+                    , "Version" = package.version
+                    , "Packaged" =  Sys.time()
+                    # , "Repository" =  "CRAN"
+                    # , "Imports" = "Stringendo, stats, utils"
+                    , "Imports" = "ReadWriter, stats, utils"
+                    # , "Suggests" = ""
+                    , "BugReports"= "https://github.com/vertesy/DatabaseLinke.R/issues"
 )
 
 
 setwd(RepositoryDir)
 if ( !dir.exists(RepositoryDir) ) { create(path = RepositoryDir, description = DESCRIPTION, rstudio = TRUE)
 } else {
-    getwd()
-    try(file.remove(c("DESCRIPTION","NAMESPACE", "DatabaseLinke.R.Rproj")))
-    usethis::create_package(path = RepositoryDir, fields = DESCRIPTION, open = F)
+  getwd()
+  try(file.remove(c("DESCRIPTION","NAMESPACE", "DatabaseLinke.R.Rproj")))
+  usethis::create_package(path = RepositoryDir, fields = DESCRIPTION, open = F)
 }
 
 
