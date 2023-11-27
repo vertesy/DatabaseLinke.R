@@ -23,7 +23,7 @@ try(dev.off(), silent = TRUE)
 
 # Setup ------------------------
 (package.name <- 	"DatabaseLinke.R")
-package.version <- "1.6.5"
+package.version <- "1.7.0"
 setwd("~/GitHub/Packages/")
 
 RepositoryDir <- paste0("~/GitHub/Packages/", package.name, "/")

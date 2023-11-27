@@ -211,7 +211,7 @@ link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
 #' link_uniprot_mice(geneSymbols, Open = TRUE)
 #'
 #' @export
-link_uniprot_mice <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
+link_uniprot_mice <- function(vector_of_gene_symbols, writeOut = FALSE, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links <- paste0(uniprot_mouse[1], vector_of_gene_symbols, uniprot_mouse[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
@@ -238,7 +238,7 @@ lll <- "http://www.uniprot.org/uniprot/?query=Eef1d+Mouse+reviewed%3Ayes+&sort=s
 #' link_uniprot_human(geneSymbols, Open = TRUE)
 #'
 #' @export
-link_uniprot_human <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
+link_uniprot_human <- function(vector_of_gene_symbols, writeOut = FALSE, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links <- paste0(uniprot_human[1], vector_of_gene_symbols, uniprot_human[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
@@ -263,7 +263,7 @@ link_uniprot_human <- function(vector_of_gene_symbols, writeOut = F, Open = b.db
 #' link_uniprot_zebrafish(geneSymbols, Open = TRUE)
 #'
 #' @export
-link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = F, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
+link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = FALSE, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links <- paste0(uniprot_zebra[1], vector_of_gene_symbols, uniprot_zebra[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
@@ -329,7 +329,7 @@ link_String <- function(vector_of_gene_symbols # Parse STRING protein interactio
 #'
 #' @export
 qString <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
-                    , organism = "human", writeOut = F, Open = TRUE) {
+                    , organism = "human", writeOut = FALSE, Open = TRUE) {
   suffix <- if (is.na(organism)) {
     ""
   } else if (organism == "elegans") {
@@ -439,7 +439,7 @@ link_google <- function(
     ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
   } else if (Open) {
     for (linkX in links) Sys.sleep(0.3 + runif(1))
-    browseURL(linkX, encodeIfNeeded = T)
+    browseURL(linkX, encodeIfNeeded = TRUE)
   } else {
     return(links)
   }
@@ -497,7 +497,7 @@ link_bing <- function(
     ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
   } else if (Open) {
     for (linkX in links) Sys.sleep(0.3 + runif(1))
-    browseURL(linkX, encodeIfNeeded = T)
+    browseURL(linkX, encodeIfNeeded = TRUE)
   } else {
     return(links)
   }
@@ -616,14 +616,14 @@ link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
 #' @param searchQueryPrefix The base URL for SNPedia search, default: 'https://www.snpedia.com/index.php/'.
 #' @param as.ExcelLink A logical indicating whether to format the links as Excel links, default: TRUE.
 #' @param as.MarkDownLink A logical indicating whether to format the links as Markdown links, default: FALSE.
-#' @examples link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl(header = F))
+#' @examples link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl(header = FALSE))
 #'
 #' @export
 link_SNPedia_clip2clip <- function(
-    rdIDs = clipr::read_clip_tbl(header = F),
+    rdIDs = clipr::read_clip_tbl(header = FALSE),
     searchQueryPrefix = "https://www.snpedia.com/index.php/",
-    as.ExcelLink = T,
-    as.MarkDownLink = F) {
+    as.ExcelLink = TRUE,
+    as.MarkDownLink = FALSE) {
   v.rdIDs <- tibble::deframe(rdIDs)
   links <- paste0(searchQueryPrefix, v.rdIDs)
   tbl_link <- as.tibble(links)
@@ -650,13 +650,13 @@ link_SNPedia_clip2clip <- function(
 #' @param coordinates A two-column dataframe of coordinates in the format (e.g., 5:35162876 C/T or 16:7164219 T/G) read from the clipboard. Default: clipboard content.
 #' @param searchQueryPrefix The base URL for Genoox Franklin search query. Default: 'https://franklin.genoox.com/clinical-db/variant/snp/'.
 #' @param as.ExcelLink A logical indicating whether to format the links as Excel links. Default: TRUE.
-#' @examples link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl(header = F))
+#' @examples link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl(header = FALSE))
 #'
 #' @export
 link_Franklin_clip2clip <- function(
-    coordinates = clipr::read_clip_tbl(header = F),
+    coordinates = clipr::read_clip_tbl(header = FALSE),
     searchQueryPrefix = "https://franklin.genoox.com/clinical-db/variant/snp/",
-    as.ExcelLink = T) {
+    as.ExcelLink = TRUE) {
   stopifnot(ncol(coordinates) == 2)
   Coord <-
     if (idim(coordinates)[2] == 2) {
@@ -692,16 +692,16 @@ link_Franklin_clip2clip <- function(
 #' @param suffix The suffix for VarSome search. Default: "?annotation-mode=germline".
 #' @param as.ExcelLink A logical indicating whether to format the links as Excel links. Default: TRUE.
 #' @param as.MarkDownLink A logical indicating whether to format the links as Markdown links. Default: FALSE.
-#' @examples link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl(header = F), hg = "hg38")
+#' @examples link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl(header = FALSE), hg = "hg38")
 #'
 #' @export
 link_VarSome_clip2clip <- function(
-    rdIDs = clipr::read_clip_tbl(header = F),
+    rdIDs = clipr::read_clip_tbl(header = FALSE),
     searchQueryPrefix = "https://varsome.com/variant/",
     hg = "hg19",
     suffix = "?annotation-mode=germline",
-    as.ExcelLink = T,
-    as.MarkDownLink = F) {
+    as.ExcelLink = TRUE,
+    as.MarkDownLink = FALSE) {
   "https://varsome.com/variant/hg38/rs12970134?annotation-mode=germline"
   prefix_total <- paste0(searchQueryPrefix, hg, "/")
 
