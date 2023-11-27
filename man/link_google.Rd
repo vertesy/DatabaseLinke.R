@@ -38,5 +38,4 @@ Uses google="http://www.google.com/search?as_q=".
 geneSymbols <- c("Sox2", "Actb")
 link_google(geneSymbols)
 link_google(geneSymbols, Open = TRUE)
-
 }
