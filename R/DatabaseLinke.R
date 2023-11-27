@@ -60,6 +60,7 @@ openURLs.1by1 <- function(links, wait = 1) {
 #' link_GeneCards(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links <- paste0(GeneCards, vector_of_gene_symbols)
   if (writeOut) {
@@ -85,6 +86,7 @@ link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Op
 #' link_ensembl_zebra(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links <- paste0(grc_Zebra[1], vector_of_gene_symbols, grc_Zebra[2])
   if (writeOut) {
@@ -110,6 +112,7 @@ link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
 #' link_ensembl_mice(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links <- paste0(grc_mm38[1], vector_of_gene_symbols, grc_mm38[2])
   if (writeOut) {
@@ -135,6 +138,7 @@ link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut,
 #' link_ensembl_zebra(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse the latest ensembl (GRC38) links to your list of gene symbols.
   links <- paste0(grc_Zebra[1], vector_of_gene_symbols, grc_Zebra[2])
   if (writeOut) {
@@ -160,6 +164,7 @@ link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
 #' link_ensembl(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links <- paste0(ensembl_multispecies[1], vector_of_gene_symbols, ensembl_multispecies[2])
   if (writeOut) {
@@ -185,6 +190,7 @@ link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
 #' link_ensembl.grc37(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse ensembl GRC37 links to your list of gene symbols.
   links <- paste0(grc37[1], vector_of_gene_symbols, grc37[2])
   if (writeOut) {
@@ -211,6 +217,7 @@ link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
 #' link_uniprot_mice(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_uniprot_mice <- function(vector_of_gene_symbols, writeOut = FALSE, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links <- paste0(uniprot_mouse[1], vector_of_gene_symbols, uniprot_mouse[2])
   if (writeOut) {
@@ -238,6 +245,7 @@ lll <- "http://www.uniprot.org/uniprot/?query=Eef1d+Mouse+reviewed%3Ayes+&sort=s
 #' link_uniprot_human(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_uniprot_human <- function(vector_of_gene_symbols, writeOut = FALSE, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links <- paste0(uniprot_human[1], vector_of_gene_symbols, uniprot_human[2])
   if (writeOut) {
@@ -263,6 +271,7 @@ link_uniprot_human <- function(vector_of_gene_symbols, writeOut = FALSE, Open = 
 #' link_uniprot_zebrafish(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = FALSE, Open = b.dbl.Open) { # Parse the latest UNIPROT links to your list of gene symbols.
   links <- paste0(uniprot_zebra[1], vector_of_gene_symbols, uniprot_zebra[2])
   if (writeOut) {
@@ -290,6 +299,7 @@ link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = FALSE, Ope
 #' link_String(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 
 link_String <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
                         , organism = "human", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
@@ -328,6 +338,7 @@ link_String <- function(vector_of_gene_symbols # Parse STRING protein interactio
 #' qString(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 qString <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
                     , organism = "human", writeOut = FALSE, Open = TRUE) {
   suffix <- if (is.na(organism)) {
@@ -366,6 +377,7 @@ qString <- function(vector_of_gene_symbols # Parse STRING protein interaction da
 #' link_pubmed(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_pubmed <- function(vector_of_gene_symbols # Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
                         , additional_terms = "", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links <- paste0(PUBMED_search_prefix, vector_of_gene_symbols, " ", paste(additional_terms, collapse = " "))
@@ -393,6 +405,7 @@ link_pubmed <- function(vector_of_gene_symbols # Parse PUBMED database links to 
 #' link_wikipedia(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_wikipedia <- function(vector_of_gene_symbols # Parse wikipedia search query links to your list of gene symbols.
                            , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
   links <- paste0(wikipedia, vector_of_gene_symbols)
@@ -423,6 +436,7 @@ link_wikipedia <- function(vector_of_gene_symbols # Parse wikipedia search query
 #' @examples geneSymbols <- c("Sox2", "Actb")
 #' link_google(geneSymbols)
 #' link_google(geneSymbols, Open = TRUE)
+#' @importFrom ReadWriter write.simple.append
 #'
 #' @export
 link_google <- function(
@@ -483,6 +497,7 @@ function(vector_of_gene_symbols, prefix = "", suffix = "", writeOut = b.dbl.writ
 #' @examples link_bing("ACTB")
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_bing <- function(
     vector_of_gene_symbols #  Parse bing search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
     , bing = "https://www.bing.com/search?q = ", prefix = "", suffix = "",
@@ -516,6 +531,7 @@ link_bing <- function(
 #' qHGNC(geneSymbols, Open = FALSE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 qHGNC <- function(
     vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
     , HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
@@ -565,6 +581,7 @@ link_HGNC <- qHGNC
 #' link_wormbase(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
 link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse wormbase database links to your list of gene symbols..
   links <- paste0(wormbase_search_prefix, vector_of_gene_symbols)
   if (writeOut) {
@@ -594,6 +611,8 @@ link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Ope
 #' link_MGI.JAX(geneSymbols, Open = TRUE)
 #'
 #' @export
+#' @importFrom ReadWriter write.simple.append
+#' @importFrom clipr read_clip_tbl
 link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
   links <- paste0(MGI_search_prefix, vector_of_gene_symbols, MGI_search_suffix)
   if (writeOut) {
@@ -619,6 +638,8 @@ link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
 #' @examples link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl(header = FALSE))
 #'
 #' @export
+#' @importFrom clipr read_clip_tbl write_clip
+#' @importFrom tibble deframe
 link_SNPedia_clip2clip <- function(
     rdIDs = clipr::read_clip_tbl(header = FALSE),
     searchQueryPrefix = "https://www.snpedia.com/index.php/",
@@ -653,6 +674,8 @@ link_SNPedia_clip2clip <- function(
 #' @examples link_Franklin_clip2clip(coordinates = clipr::read_clip_tbl(header = FALSE))
 #'
 #' @export
+#' @importFrom clipr read_clip_tbl write_clip
+#' @importFrom tibble deframe
 link_Franklin_clip2clip <- function(
     coordinates = clipr::read_clip_tbl(header = FALSE),
     searchQueryPrefix = "https://franklin.genoox.com/clinical-db/variant/snp/",
@@ -695,6 +718,8 @@ link_Franklin_clip2clip <- function(
 #' @examples link_VarSome_clip2clip(rdIDs = clipr::read_clip_tbl(header = FALSE), hg = "hg38")
 #'
 #' @export
+#' @importFrom clipr read_clip_tbl write_clip
+#' @importFrom tibble deframe
 link_VarSome_clip2clip <- function(
     rdIDs = clipr::read_clip_tbl(header = FALSE),
     searchQueryPrefix = "https://varsome.com/variant/",
