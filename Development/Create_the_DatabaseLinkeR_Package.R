@@ -2,7 +2,7 @@
 # Create_the_DatabaseLinke.R_Package.R
 # Thu Jul 20 04:49:21 2023 ------------------------------
 ######################################################################################################
-# source("/Users/abel.vertesy/GitHub/Packages/DatabaseLinke.R/Development/Create_the_DatabaseLinke.R_Package.R")
+# source("~/GitHub/Packages/DatabaseLinke.R/Development/Create_the_DatabaseLinke.R_Package.R")
 rm(list = ls(all.names = TRUE));
 try(dev.off(), silent = TRUE)
 # install.packages("devtools")
