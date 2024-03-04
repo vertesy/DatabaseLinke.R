@@ -42,7 +42,7 @@ Install directly from **GitHub** via **devtools** with one R command:
 ```r
 # install.packages("devtools"); # If you don't have it.
 require("devtools")
-devtools::install_github(repo = "vertesy/DatabaseLinke.R ")
+devtools::install_github(repo = "vertesy/DatabaseLinke.R")
 ```
 
 
