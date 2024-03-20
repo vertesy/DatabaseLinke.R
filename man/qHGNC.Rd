@@ -6,7 +6,7 @@
 \usage{
 qHGNC(
   vector_of_gene_symbols,
-  HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
+  HGNC_symbol_search = "https://www.genenames.org/tools/search/#!/?query=",
   writeOut = FALSE,
   Open = TRUE
 )

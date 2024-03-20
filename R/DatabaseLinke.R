@@ -533,8 +533,9 @@ link_bing <- function(
 #' @export
 #' @importFrom ReadWriter write.simple.append
 qHGNC <- function(
-    vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
-    , HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
+    vector_of_gene_symbols,
+    # HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
+    HGNC_symbol_search = "https://www.genenames.org/tools/search/#!/?query=",
     writeOut = FALSE, Open = TRUE) {
   links <- paste0(HGNC_symbol_search, vector_of_gene_symbols)
   if (writeOut) {
