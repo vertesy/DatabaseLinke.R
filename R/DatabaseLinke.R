@@ -524,14 +524,16 @@ link_bing <- function(
 #'
 #' @description Parses HGNC links for a provided list of gene symbols.
 #' @param vector_of_gene_symbols A character vector of gene symbols to generate HGNC links.
+#' @param HGNC_symbol_search A HGNC search URL string, default:
+#' "https://www.genenames.org/tools/search/#!/?query=".
 #' @param writeOut A boolean indicating whether to write the bash commands to file, default: FALSE.
 #' @param Open A boolean indicating whether to open the HGNC links, default: TRUE.
 #' @examples geneSymbols <- c("Sox2", "Actb")
 #' qHGNC(geneSymbols)
 #' qHGNC(geneSymbols, Open = FALSE)
 #'
-#' @export
 #' @importFrom ReadWriter write.simple.append
+#' @export
 qHGNC <- function(
     vector_of_gene_symbols,
     # HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
