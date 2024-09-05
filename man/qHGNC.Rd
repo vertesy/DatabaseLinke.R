@@ -14,6 +14,9 @@ qHGNC(
 \arguments{
 \item{vector_of_gene_symbols}{A character vector of gene symbols to generate HGNC links.}
 
+\item{HGNC_symbol_search}{A HGNC search URL string, default:
+"https://www.genenames.org/tools/search/#!/?query=".}
+
 \item{writeOut}{A boolean indicating whether to write the bash commands to file, default: FALSE.}
 
 \item{Open}{A boolean indicating whether to open the HGNC links, default: TRUE.}
