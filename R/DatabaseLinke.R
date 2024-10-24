@@ -1,8 +1,9 @@
 ######################################################################
 # Parse links to databases from your list of gene symbols
 ######################################################################
-# source('~/GitHub/Packages/DatabaseLinke.R/DatabaseLinke.R')
+# file.edit('~/GitHub/Packages/DatabaseLinke.R/DatabaseLinke.R')
 # source('https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/DatabaseLinke.R')
+# file.edit('~/GitHub/Packages/DatabaseLinke.R/Development/Create_the_DatabaseLinke.R_Package.R')
 
 ######################################################################
 ## Full functionality is only expected on OS X
@@ -585,7 +586,8 @@ link_HGNC <- qHGNC
 #'
 #' @export
 #' @importFrom ReadWriter write.simple.append
-link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse wormbase database links to your list of gene symbols..
+link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open
+                          , wormbase_search_prefix = wormbase_search_prefix) {
   links <- paste0(wormbase_search_prefix, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
@@ -616,7 +618,9 @@ link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Ope
 #' @export
 #' @importFrom ReadWriter write.simple.append
 #' @importFrom clipr read_clip_tbl
-link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open) { # Parse MGI JAX mouse genomics links search query links to your list of gene symbols.
+link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open
+                         , MGI_search_prefix = MGI_search_prefix, MGI_search_suffix = MGI_search_suffix
+                         ) {
   links <- paste0(MGI_search_prefix, vector_of_gene_symbols, MGI_search_suffix)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")

@@ -7,7 +7,9 @@
 link_MGI.JAX(
   vector_of_gene_symbols,
   writeOut = b.dbl.writeOut,
-  Open = b.dbl.Open
+  Open = b.dbl.Open,
+  MGI_search_prefix = MGI_search_prefix,
+  MGI_search_suffix = MGI_search_suffix
 )
 }
 \arguments{

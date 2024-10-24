@@ -7,7 +7,8 @@
 link_wormbase(
   vector_of_gene_symbols,
   writeOut = b.dbl.writeOut,
-  Open = b.dbl.Open
+  Open = b.dbl.Open,
+  wormbase_search_prefix = wormbase_search_prefix
 )
 }
 \arguments{
