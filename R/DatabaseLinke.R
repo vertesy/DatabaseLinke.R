@@ -562,7 +562,7 @@ link_HGNC <- qHGNC
 # #' @param Open PARAM_DESCRIPTION, Default: TRUE
 # #' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
 # #' @export
-# qHGNC <- function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
+# qHGNC < - function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
 #                   , writeOut = FALSE, Open = TRUE) {
 #   links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
 #   if (writeOut) {
@@ -586,8 +586,9 @@ link_HGNC <- qHGNC
 #'
 #' @export
 #' @importFrom ReadWriter write.simple.append
-link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open
-                          , wormbase_search_prefix = wormbase_search_prefix) {
+link_wormbase <- function(
+    vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open,
+    wormbase_search_prefix = wormbase_search_prefix) {
   links <- paste0(wormbase_search_prefix, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
@@ -615,12 +616,12 @@ link_wormbase <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Ope
 #' link_MGI.JAX(geneSymbols)
 #' link_MGI.JAX(geneSymbols, Open = TRUE)
 #'
-#' @export
 #' @importFrom ReadWriter write.simple.append
-#' @importFrom clipr read_clip_tbl
-link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open
-                         , MGI_search_prefix = MGI_search_prefix, MGI_search_suffix = MGI_search_suffix
-                         ) {
+#'
+#' @export
+link_MGI.JAX <- function(
+    vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open,
+    MGI_search_prefix = MGI_search_prefix, MGI_search_suffix = MGI_search_suffix) {
   links <- paste0(MGI_search_prefix, vector_of_gene_symbols, MGI_search_suffix)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
@@ -644,9 +645,10 @@ link_MGI.JAX <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
 #' @param as.MarkDownLink A logical indicating whether to format the links as Markdown links, default: FALSE.
 #' @examples link_SNPedia_clip2clip(rdIDs = clipr::read_clip_tbl(header = FALSE))
 #'
-#' @export
 #' @importFrom clipr read_clip_tbl write_clip
 #' @importFrom tibble deframe
+#'
+#' @export
 link_SNPedia_clip2clip <- function(
     rdIDs = clipr::read_clip_tbl(header = FALSE),
     searchQueryPrefix = "https://www.snpedia.com/index.php/",
@@ -689,7 +691,7 @@ link_Franklin_clip2clip <- function(
     as.ExcelLink = TRUE) {
   stopifnot(ncol(coordinates) == 2)
   Coord <-
-    if (idim(coordinates)[2] == 2) {
+    if (dim(coordinates)[2] == 2) {
       coordinates <- paste(coordinates[, 1], coordinates[, 2], sep = ":")
     } else {
       tibble::deframe(coordinates)

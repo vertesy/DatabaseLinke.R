@@ -8,7 +8,7 @@ DESCRIPTION <- list(
     e.g.: the function of a set of differentially expressed genes.",
 
   depends = "",
-  imports = "ReadWriter",
+  imports = "tibble, clipr, ReadWriter",
   suggests = "",
 
   author.given = "Abel",

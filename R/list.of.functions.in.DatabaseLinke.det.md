@@ -1,5 +1,5 @@
 ## List of Functions in DatabaseLinke.R (21) 
-Updated: 2024/10/24 12:57
+Updated: 2024/10/24 15:11
 - #### 1 `openURLs.1by1()`
 Open URLs One by One. This function opens provided links sequentially with an optional delay between each.  This can be useful for slower computers and to avoid triggering anti-robot measures in search engines.
 

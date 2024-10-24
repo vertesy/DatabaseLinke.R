@@ -11,8 +11,10 @@ Description: A set of functions to parse and open (search query) links to
 License: GPL-3 + file LICENSE
 BugReports: https://github.com/vertesy/DatabaseLinke.R/issues
 Imports: 
-    ReadWriter
+    clipr,
+    ReadWriter,
+    tibble
 Encoding: UTF-8
-Packaged: 2024-10-24 12:57:19.171221
+Packaged: 2024-10-24 15:14:02.289493
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1

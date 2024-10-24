@@ -5,6 +5,10 @@
 # try(dev.off(), silent = TRUE)
 
 # Functions ------------------------
+devtools::load_all("~/GitHub/Packages/PackageTools")
+# require(PackageTools)
+
+# Setup ------------------------
 repository.dir <- "~/GitHub/Packages/DatabaseLinke.R/"
 (package.name <- basename(repository.dir))
 config.path <- file.path(repository.dir, "Development/config.R")
@@ -69,7 +73,8 @@ if (F) {
 # Generate the list of functions ------------------------------------------------
 (ls.scripts.full.path <- list.files(file.path(repository.dir, "R"), full.names = T, pattern = '.R$'))
 for (scriptX in ls.scripts.full.path) {
-  PackageTools::list_of_funs_to_markdown(scriptX)
+  # PackageTools::list_of_funs_to_markdown(scriptX)
+  # PackageTools::list_of_funs_to_markdown_simple(scriptX)
 }
 file.edit(paste0(repository.dir, "R/list.of.functions.in.", package.name, ".det.md"))
 file.edit(paste0(repository.dir, "README.md"))
