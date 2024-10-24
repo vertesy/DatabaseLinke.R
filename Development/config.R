@@ -1,3 +1,4 @@
+# file.edit("~/GitHub/Packages/XXXXXXXXXX/Development/config.R")
 # Configuration for the Package
 DESCRIPTION <- list(
   package.name = "DatabaseLinke.R",
