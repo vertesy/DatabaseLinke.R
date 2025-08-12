@@ -42,7 +42,7 @@ Install directly from **GitHub** via **devtools** with one R command:
 ```r
 # install.packages("devtools"); # If you don't have it.
 require("devtools")
-devtools::install_github(repo = "vertesy/DatabaseLinke.R")
+devtools::install_github(repo = "vertesy/DatabaseLinke.R", ref = "main")
 ```
 
 
@@ -279,7 +279,7 @@ Updated: 2023/11/27 20:46
      [See details for CodeAndRoll](https://github.com/vertesy/DatabaseLinke.R/blob/master/R/CodeAndRoll.md)
    - If still some functons are missing, try to install MarkdownReports:
      `install.packages("devtools")`
-     `devtools::install_github(repo = "vertesy/MarkdownReports")`
+     `devtools::install_github(repo = "vertesy/MarkdownReports", ref = "main")`
      `require("MarkdownReports")`
      [See details for MarkdownReports](https://vertesy.github.io/MarkdownReports/)
 
