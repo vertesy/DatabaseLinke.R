@@ -4,7 +4,7 @@
 \alias{openURLs.1by1}
 \title{Open URLs One by One}
 \usage{
-openURLs.1by1(links, wait = 1)
+openURLs.1by1(links, wait = 1, verbose = T)
 }
 \arguments{
 \item{links}{A vector of URLs to be opened sequentially.}
