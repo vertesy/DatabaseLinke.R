@@ -1,4 +1,5 @@
-geneSymbols <- c("Sox2", "Actb")
+geneSymbols = c('Sox2', 'Actb')
+
 
 
 openURLs.1by1("http://www.google.com/search?as_q= Sox2 ")
@@ -58,9 +59,6 @@ link_wikipedia(geneSymbols, Open = TRUE)
 link_google(geneSymbols)
 link_google(geneSymbols, Open = TRUE)
 
-link_bing(geneSymbols, Open = TRUE)
-link_google(geneSymbols, Open = TRUE)
-
 
 link_HGNC(geneSymbols)
 link_HGNC(geneSymbols, Open = TRUE)
@@ -80,6 +78,8 @@ link_wormbase(geneSymbols, Open = TRUE)
 
 link_MGI.JAX(geneSymbols)
 link_MGI.JAX(geneSymbols, Open = TRUE)
+
+
 
 
 # Junkyard

@@ -6,12 +6,12 @@
 \usage{
 link_bing(
   vector_of_gene_symbols,
-  bing = "https://www.bing.com/search?q=",
+  bing = "https://www.bing.com/search?q = ",
   prefix = "",
   suffix = "",
   writeOut = b.dbl.writeOut,
   Open = b.dbl.Open,
-  sleep = 0.5
+  sleep = 0
 )
 }
 \arguments{

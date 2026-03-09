@@ -6,7 +6,7 @@
 \usage{
 link_google(
   vector_of_gene_symbols,
-  google = "http://www.google.com/search?as_q=",
+  google = "http://www.google.com/search?as_q = ",
   prefix = "",
   suffix = "",
   writeOut = b.dbl.writeOut,
