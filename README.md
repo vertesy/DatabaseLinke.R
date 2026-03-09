@@ -20,6 +20,15 @@ It can do 3 things:
 
 *Note: It typically parses query (search) links, instead direct links*
 
+## List of Search engines
+
+*Search for a set of genes with accompanying terms *
+
+1. **google**
+2. **bing** 
+
+
+
 ## List of Databases
 
 - **[Ensemble](https://www.ensembl.org/index.html)**
