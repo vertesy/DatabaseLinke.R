@@ -47,15 +47,8 @@ utils::globalVariables(c(
 #' openURLsOneByOne(geneSymbols)
 #'
 #' @export
-openURLs.1by1 <- function(links, wait = 1, verbose =T) {
-  for (link in links) {
-    if (wait) Sys.sleep(runif(1) + .5)
 
-    if(verbose) message(link)
-    browseURL(link)
-    # system(paste0("open '", link, "'"))
-  }
-}
+
 
 
 

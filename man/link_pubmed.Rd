@@ -2,7 +2,7 @@
 % Please edit documentation in R/DatabaseLinke.R
 \name{link_pubmed}
 \alias{link_pubmed}
-\title{link_pubmed}
+\title{Open URLs One by One}
 \usage{
 link_pubmed(
   vector_of_gene_symbols,
@@ -19,11 +19,21 @@ link_pubmed(
 \item{writeOut}{A boolean indicating whether to write out the commands or not. Default is determined by b.dbl.writeOut.}
 
 \item{Open}{A boolean indicating whether to open the generated links or not. Default is determined by b.dbl.Open.}
+
+\item{links}{A vector of URLs to be opened sequentially.}
+
+\item{wait}{Delay in seconds between opening each URL. By default, it is set to 1 second.}
 }
 \description{
+This function opens provided links sequentially with an optional delay between each.
+This can be useful for slower computers and to avoid triggering anti-robot measures in search engines.
+
 Generates links to the PUBMED database based on a given list of gene symbols and additional search terms.
 }
 \examples{
+geneSymbols <- c("Sox2", "Actb")
+openURLsOneByOne(geneSymbols)
+
 geneSymbols <- c("Sox2", "Actb")
 link_pubmed(geneSymbols)
 link_pubmed(geneSymbols, Open = TRUE)

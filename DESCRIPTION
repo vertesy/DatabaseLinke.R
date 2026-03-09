@@ -1,20 +1,19 @@
 Package: DatabaseLinke.R
-Title: DatabaseLinke.R – Parse links to databases from your list of gene
-    symbols
-Version: 1.7.0
+Title: DatabaseLinke.R – Parse, open, save, links to databases and search
+    engines from your list of gene symbols
+Version: 1.8.1
 Authors@R: 
     person("Abel", "Vertesy", , "av@imba.oeaw.ac.at", role = c("aut", "cre"))
-Author: Abel Vertesy <av@imba.oeaw.ac.at> [aut, cre]
 Description: A set of functions to parse and open (search query) links to
     genomics related and other websites for R. Useful when you want to
     explore e.g.: the function of a set of differentially expressed genes.
 License: GPL-3 + file LICENSE
 BugReports: https://github.com/vertesy/DatabaseLinke.R/issues
 Imports: 
-    clipr,
     ReadWriter,
+    clipr,
     tibble
 Encoding: UTF-8
-Packaged: 2024-10-24 15:14:02.289493
+Packaged: 2026-03-09 20:21:46.228509
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
