@@ -1,7 +1,8 @@
 ######################################################################
 # Parse links to databases from your list of gene symbols
 ######################################################################
-# file.edit('~/GitHub/Packages/DatabaseLinke.R/DatabaseLinke.R')
+# file.edit('~/GitHub/Packages/DatabaseLinke.R/R/DatabaseLinke.R')
+# file.edit('~/GitHub/Packages/DatabaseLinke.R/R/DatabaseLinke.Setup.Global.Variables.R')
 # source('https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/DatabaseLinke.R')
 # file.edit('~/GitHub/Packages/DatabaseLinke.R/Development/Create_the_DatabaseLinke.R_Package.R')
 
@@ -30,6 +31,10 @@ utils::globalVariables(c(
 ))
 
 
+
+# _________________________________________________________________________________________________
+# Helpers ________________________________________________________________ ----
+
 # _________________________________________________________________________________________________
 #' @title Open URLs One by One
 #'
@@ -45,9 +50,210 @@ utils::globalVariables(c(
 openURLs.1by1 <- function(links, wait = 1) {
   for (link in links) {
     if (wait) Sys.sleep(runif(1) + .5)
-    browseURL(link)
+    # browseURL(link)
+    system(paste0("open '", link, "'"))
   }
 }
+
+
+
+# _________________________________________________________________________________________________
+# Search engines ________________________________________________________________ ----
+
+
+# _________________________________________________________________________________________________
+#' @title link_pubmed
+#'
+#' @description Generates links to the PUBMED database based on a given list of gene symbols and additional search terms.
+#' @param vector_of_gene_symbols A character vector of gene symbols for which links should be created.
+#' @param additional_terms A character vector of additional terms to be included in the search query. Default is an empty string.
+#' @param writeOut A boolean indicating whether to write out the commands or not. Default is determined by b.dbl.writeOut.
+#' @param Open A boolean indicating whether to open the generated links or not. Default is determined by b.dbl.Open.
+#' @examples geneSymbols <- c("Sox2", "Actb")
+#' link_pubmed(geneSymbols)
+#' link_pubmed(geneSymbols, Open = TRUE)
+#'
+#' @export
+#' @importFrom ReadWriter write.simple.append
+link_pubmed <- function(vector_of_gene_symbols # Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
+                        , additional_terms = "", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
+  links <- paste0(PUBMED_search_prefix, vector_of_gene_symbols, " ", paste(additional_terms, collapse = " "))
+  if (writeOut) {
+    bash_commands <- paste0("open '", links, "'")
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
+  } else if (Open) {
+    openURLs.1by1(links)
+  } else {
+    return(links)
+  }
+}
+
+
+# _________________________________________________________________________________________________
+#' @title link_wikipedia
+#'
+#' @description Generates Wikipedia search query links based on a given list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols for which links should be created.
+#' @param writeOut A boolean indicating whether to write out the commands or not. Default is determined by b.dbl.writeOut.
+#' @param Open A boolean indicating whether to open the generated links or not. Default is determined by b.dbl.Open.
+#' @examples geneSymbols <- c("Sox2", "Actb")
+#' link_wikipedia(geneSymbols)
+#' link_wikipedia(geneSymbols, Open = TRUE)
+#'
+#' @export
+#' @importFrom ReadWriter write.simple.append
+link_wikipedia <- function(vector_of_gene_symbols # Parse wikipedia search query links to your list of gene symbols.
+                           , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
+  links <- paste0(wikipedia, vector_of_gene_symbols)
+  if (writeOut) {
+    bash_commands <- paste0("open '", links, "'")
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
+  } else if (Open) {
+    openURLs.1by1(links)
+  } else {
+    return(links)
+  }
+}
+
+# _________________________________________________________________________________________________
+#' @title link_google
+#'
+#' @description Parses Google search query links for a provided list of gene symbols.
+#'              The "prefix" and "suffix" will be searched for together with each gene (e.g., "Human ID4 neurons").
+#'              Uses google="http://www.google.com/search?as_q=".
+#' @param vector_of_gene_symbols A character vector of gene symbols to generate Google search links.
+#' @param google A Google search URL string, default: "http://www.google.com/search?as_q = ".
+#' @param prefix A string to be added before each gene symbol in the search query, default: ''.
+#' @param suffix A string to be added after each gene symbol in the search query, default: ''.
+#' @param writeOut A boolean indicating whether to write the bash commands to file, default: b.dbl.writeOut.
+#' @param Open A boolean indicating whether to open the search links, default: b.dbl.Open.
+#' @param sleep The sleep interval in seconds between opening search links, default: 1.
+#' @examples geneSymbols <- c("Sox2", "Actb")
+#' link_google(geneSymbols)
+#' link_google(geneSymbols, Open = TRUE)
+#' @importFrom ReadWriter write.simple.append
+#'
+#' @export
+link_google <- function(
+    vector_of_gene_symbols #  Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
+    , google = "http://www.google.com/search?as_q = ", prefix = "", suffix = "",
+    writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
+  links <- paste0(google, prefix, " ", vector_of_gene_symbols, " ", suffix)
+  if (writeOut) {
+    bash_commands <- paste0("open '", links, "'")
+    if (sleep > 0) {
+      bash_commands <- paste0(bash_commands, " ; sleep ", sleep)
+    } # if wait
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
+  } else if (Open) {
+    for (linkX in links) Sys.sleep(0.3 + runif(1))
+    browseURL(linkX, encodeIfNeeded = TRUE)
+  } else {
+    return(links)
+  }
+}
+
+function(vector_of_gene_symbols, prefix = "", suffix = "", writeOut = b.dbl.writeOut,
+         Open = b.dbl.Open, sleep = 1) {
+  links <- paste0(
+    google, prefix, " ", vector_of_gene_symbols,
+    " ", suffix
+  )
+  if (writeOut) {
+    bash_commands <- paste0("open '", links, "'")
+    if (sleep > 0) {
+      bash_commands <- paste0(
+        bash_commands, " ; sleep ",
+        sleep
+      )
+    }
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
+  } else if (Open) {
+    openURLs.1by1(links)
+  } else {
+    return(links)
+  }
+}
+
+
+# _________________________________________________________________________________________________
+#' @title link_bing
+#'
+#' @description Parses Bing search query links for a provided list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols to generate Bing search links.
+#' @param bing A Bing search URL string, default: "https://www.bing.com/search?q = ".
+#' @param prefix A string to be added before each gene symbol in the search query, default: ''.
+#' @param suffix A string to be added after each gene symbol in the search query, default: ''.
+#' @param writeOut A boolean indicating whether to write the bash commands to file, default: b.dbl.writeOut.
+#' @param Open A boolean indicating whether to open the search links, default: b.dbl.Open.
+#' @param sleep The sleep interval in seconds between opening search links, default: 1.
+#' @examples link_bing("ACTB")
+#'
+#' @export
+#' @importFrom ReadWriter write.simple.append
+link_bing <- function(
+    vector_of_gene_symbols #  Parse bing search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
+    , bing = "https://www.bing.com/search?q = ", prefix = "", suffix = "",
+    writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
+  links <- paste0(bing, prefix, " ", vector_of_gene_symbols, " ", suffix)
+  if (writeOut) {
+    bash_commands <- paste0("open '", links, "'")
+    if (sleep > 0) {
+      bash_commands <- paste0(bash_commands, " ; sleep ", sleep)
+    } # if wait
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
+  } else if (Open) {
+    for (linkX in links) Sys.sleep(0.3 + runif(1))
+    browseURL(linkX, encodeIfNeeded = TRUE)
+  } else {
+    return(links)
+  }
+}
+
+
+# _________________________________________________________________________________________________
+# Bioinformatics databases  ________________________________________________________________ ----
+
+
+
+#' @title HGNC link generator and web lookup
+#'
+#' @description Parses HGNC links for a provided list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols to generate HGNC links.
+#' @param HGNC_symbol_search A HGNC search URL string, default:
+#' "https://www.genenames.org/tools/search/#!/?query=".
+#' @param writeOut A boolean indicating whether to write the bash commands to file, default: FALSE.
+#' @param Open A boolean indicating whether to open the HGNC links, default: TRUE.
+#' @examples geneSymbols <- c("Sox2", "Actb")
+#' qHGNC(geneSymbols)
+#' qHGNC(geneSymbols, Open = FALSE)
+#'
+#' @importFrom ReadWriter write.simple.append
+#' @export
+qHGNC <- function(
+    vector_of_gene_symbols,
+    # HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
+    HGNC_symbol_search = "https://www.genenames.org/tools/search/#!/?query=",
+    writeOut = FALSE, Open = TRUE) {
+  links <- paste0(HGNC_symbol_search, vector_of_gene_symbols)
+  if (writeOut) {
+    bash_commands <- paste0("open ", links)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
+  } else if (Open) {
+    openURLs.1by1(links)
+  } else {
+    return(links)
+  }
+}
+
+link_HGNC <- qHGNC
+
 
 # _________________________________________________________________________________________________
 #' @title GeneCards Link Generator
@@ -74,6 +280,95 @@ link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Op
     return(links)
   }
 }
+
+
+
+# _________________________________________________________________________________________________
+#' @title Parse STRING Database Links
+#'
+#' @description This function generates links to the STRING protein interaction database for a list of gene symbols.
+#' @param vector_of_gene_symbols A character vector of gene symbols.
+#' @param organism A string indicating the organism. Can be 'mouse', 'human' or 'elegans'. Default is 'human'.
+#' @param writeOut A logical indicating whether to write out the links. Default is b.dbl.writeOut.
+#' @param Open A logical indicating whether to open the links. Default is b.dbl.Open.
+#' @examples geneSymbols <- c("Sox2", "Actb")
+#' link_String(geneSymbols)
+#' link_String(geneSymbols, Open = TRUE)
+#'
+#' @export
+#' @importFrom ReadWriter write.simple.append
+
+link_String <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
+                        , organism = "human", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
+  suffix <- if (is.na(organism)) {
+    ""
+  } else if (organism == "elegans") {
+    STRING_elegans_suffix
+  } else if (organism == "mouse") {
+    STRING_mouse_suffix
+  } else if (organism == "human") {
+    STRING_human_suffix
+  }
+  links <- paste0(STRING, vector_of_gene_symbols, suffix)
+  if (writeOut) {
+    bash_commands <- paste0("open '", links, "'")
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
+  } else if (Open) {
+    openURLs.1by1(links)
+  } else {
+    return(links)
+  }
+}
+
+
+
+
+
+# _________________________________________________________________________________________________
+#' @title qString
+#'
+#' @description Generates links to the STRING protein interaction database based on a given list of gene symbols. The function supports different organisms such as mice, humans, or "NA" for no specific organism.
+#' @param vector_of_gene_symbols A character vector of gene symbols for which links should be created.
+#' @param organism A string indicating the organism of interest. Default is "human".
+#' @param writeOut A boolean indicating whether to write out the commands or not. Default is FALSE.
+#' @param Open A boolean indicating whether to open the generated links or not. Default is TRUE.
+#' @examples geneSymbols <- c("Sox2", "Actb")
+#' qString(geneSymbols)
+#' qString(geneSymbols, Open = TRUE)
+#'
+#' @export
+#' @importFrom ReadWriter write.simple.append
+qString <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
+                    , organism = "human", writeOut = FALSE, Open = TRUE) {
+  suffix <- if (is.na(organism)) {
+    ""
+  } else if (organism == "elegans") {
+    STRING_elegans_suffix
+  } else if (organism == "mouse") {
+    STRING_mouse_suffix
+  } else if (organism == "human") {
+    STRING_human_suffix
+  }
+  links <- paste0(STRING, vector_of_gene_symbols, suffix)
+  if (writeOut) {
+    bash_commands <- paste0("open '", links, "'")
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
+  } else if (Open) {
+    openURLs.1by1(links)
+  } else {
+    return(links)
+  }
+}
+
+
+
+# _________________________________________________________________________________________________
+# Search engines ________________________________________________________________ ----
+
+
+
 
 # _________________________________________________________________________________________________
 #' @title Zebrafish Ensembl Link Generator
@@ -287,290 +582,11 @@ link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = FALSE, Ope
 }
 
 
-# _________________________________________________________________________________________________
-#' @title Parse STRING Database Links
-#'
-#' @description This function generates links to the STRING protein interaction database for a list of gene symbols.
-#' @param vector_of_gene_symbols A character vector of gene symbols.
-#' @param organism A string indicating the organism. Can be 'mouse', 'human' or 'elegans'. Default is 'human'.
-#' @param writeOut A logical indicating whether to write out the links. Default is b.dbl.writeOut.
-#' @param Open A logical indicating whether to open the links. Default is b.dbl.Open.
-#' @examples geneSymbols <- c("Sox2", "Actb")
-#' link_String(geneSymbols)
-#' link_String(geneSymbols, Open = TRUE)
-#'
-#' @export
-#' @importFrom ReadWriter write.simple.append
-
-link_String <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
-                        , organism = "human", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
-  suffix <- if (is.na(organism)) {
-    ""
-  } else if (organism == "elegans") {
-    STRING_elegans_suffix
-  } else if (organism == "mouse") {
-    STRING_mouse_suffix
-  } else if (organism == "human") {
-    STRING_human_suffix
-  }
-  links <- paste0(STRING, vector_of_gene_symbols, suffix)
-  if (writeOut) {
-    bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-  } else if (Open) {
-    openURLs.1by1(links)
-  } else {
-    return(links)
-  }
-}
-
 
 # _________________________________________________________________________________________________
-#' @title qString
-#'
-#' @description Generates links to the STRING protein interaction database based on a given list of gene symbols. The function supports different organisms such as mice, humans, or "NA" for no specific organism.
-#' @param vector_of_gene_symbols A character vector of gene symbols for which links should be created.
-#' @param organism A string indicating the organism of interest. Default is "human".
-#' @param writeOut A boolean indicating whether to write out the commands or not. Default is FALSE.
-#' @param Open A boolean indicating whether to open the generated links or not. Default is TRUE.
-#' @examples geneSymbols <- c("Sox2", "Actb")
-#' qString(geneSymbols)
-#' qString(geneSymbols, Open = TRUE)
-#'
-#' @export
-#' @importFrom ReadWriter write.simple.append
-qString <- function(vector_of_gene_symbols # Parse STRING protein interaction database links to your list of gene symbols. "organism" can be mouse, human or NA.
-                    , organism = "human", writeOut = FALSE, Open = TRUE) {
-  suffix <- if (is.na(organism)) {
-    ""
-  } else if (organism == "elegans") {
-    STRING_elegans_suffix
-  } else if (organism == "mouse") {
-    STRING_mouse_suffix
-  } else if (organism == "human") {
-    STRING_human_suffix
-  }
-  links <- paste0(STRING, vector_of_gene_symbols, suffix)
-  if (writeOut) {
-    bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-  } else if (Open) {
-    openURLs.1by1(links)
-  } else {
-    return(links)
-  }
-}
+# Species specific databases ________________________________________________________________ ----
 
 
-
-# _________________________________________________________________________________________________
-#' @title link_pubmed
-#'
-#' @description Generates links to the PUBMED database based on a given list of gene symbols and additional search terms.
-#' @param vector_of_gene_symbols A character vector of gene symbols for which links should be created.
-#' @param additional_terms A character vector of additional terms to be included in the search query. Default is an empty string.
-#' @param writeOut A boolean indicating whether to write out the commands or not. Default is determined by b.dbl.writeOut.
-#' @param Open A boolean indicating whether to open the generated links or not. Default is determined by b.dbl.Open.
-#' @examples geneSymbols <- c("Sox2", "Actb")
-#' link_pubmed(geneSymbols)
-#' link_pubmed(geneSymbols, Open = TRUE)
-#'
-#' @export
-#' @importFrom ReadWriter write.simple.append
-link_pubmed <- function(vector_of_gene_symbols # Parse PUBMED database links to your list of gene symbols. "additional_terms" can be any vector of strings that will be searched for together with each gene.
-                        , additional_terms = "", writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
-  links <- paste0(PUBMED_search_prefix, vector_of_gene_symbols, " ", paste(additional_terms, collapse = " "))
-  if (writeOut) {
-    bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-  } else if (Open) {
-    openURLs.1by1(links)
-  } else {
-    return(links)
-  }
-}
-
-
-# _________________________________________________________________________________________________
-#' @title link_wikipedia
-#'
-#' @description Generates Wikipedia search query links based on a given list of gene symbols.
-#' @param vector_of_gene_symbols A character vector of gene symbols for which links should be created.
-#' @param writeOut A boolean indicating whether to write out the commands or not. Default is determined by b.dbl.writeOut.
-#' @param Open A boolean indicating whether to open the generated links or not. Default is determined by b.dbl.Open.
-#' @examples geneSymbols <- c("Sox2", "Actb")
-#' link_wikipedia(geneSymbols)
-#' link_wikipedia(geneSymbols, Open = TRUE)
-#'
-#' @export
-#' @importFrom ReadWriter write.simple.append
-link_wikipedia <- function(vector_of_gene_symbols # Parse wikipedia search query links to your list of gene symbols.
-                           , writeOut = b.dbl.writeOut, Open = b.dbl.Open) {
-  links <- paste0(wikipedia, vector_of_gene_symbols)
-  if (writeOut) {
-    bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-  } else if (Open) {
-    openURLs.1by1(links)
-  } else {
-    return(links)
-  }
-}
-
-# _________________________________________________________________________________________________
-#' @title link_google
-#'
-#' @description Parses Google search query links for a provided list of gene symbols.
-#'              The "prefix" and "suffix" will be searched for together with each gene (e.g., "Human ID4 neurons").
-#'              Uses google="http://www.google.com/search?as_q=".
-#' @param vector_of_gene_symbols A character vector of gene symbols to generate Google search links.
-#' @param google A Google search URL string, default: "http://www.google.com/search?as_q = ".
-#' @param prefix A string to be added before each gene symbol in the search query, default: ''.
-#' @param suffix A string to be added after each gene symbol in the search query, default: ''.
-#' @param writeOut A boolean indicating whether to write the bash commands to file, default: b.dbl.writeOut.
-#' @param Open A boolean indicating whether to open the search links, default: b.dbl.Open.
-#' @param sleep The sleep interval in seconds between opening search links, default: 1.
-#' @examples geneSymbols <- c("Sox2", "Actb")
-#' link_google(geneSymbols)
-#' link_google(geneSymbols, Open = TRUE)
-#' @importFrom ReadWriter write.simple.append
-#'
-#' @export
-link_google <- function(
-    vector_of_gene_symbols #  Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
-    , google = "http://www.google.com/search?as_q = ", prefix = "", suffix = "",
-    writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
-  links <- paste0(google, prefix, " ", vector_of_gene_symbols, " ", suffix)
-  if (writeOut) {
-    bash_commands <- paste0("open '", links, "'")
-    if (sleep > 0) {
-      bash_commands <- paste0(bash_commands, " ; sleep ", sleep)
-    } # if wait
-    ReadWriter::write.simple.append("", manualFileName =  BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-  } else if (Open) {
-    for (linkX in links) Sys.sleep(0.3 + runif(1))
-    browseURL(linkX, encodeIfNeeded = TRUE)
-  } else {
-    return(links)
-  }
-}
-
-function(vector_of_gene_symbols, prefix = "", suffix = "", writeOut = b.dbl.writeOut,
-         Open = b.dbl.Open, sleep = 1) {
-  links <- paste0(
-    google, prefix, " ", vector_of_gene_symbols,
-    " ", suffix
-  )
-  if (writeOut) {
-    bash_commands <- paste0("open '", links, "'")
-    if (sleep > 0) {
-      bash_commands <- paste0(
-        bash_commands, " ; sleep ",
-        sleep
-      )
-    }
-    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-  } else if (Open) {
-    openURLs.1by1(links)
-  } else {
-    return(links)
-  }
-}
-
-
-# _________________________________________________________________________________________________
-#' @title link_bing
-#'
-#' @description Parses Bing search query links for a provided list of gene symbols.
-#' @param vector_of_gene_symbols A character vector of gene symbols to generate Bing search links.
-#' @param bing A Bing search URL string, default: "https://www.bing.com/search?q = ".
-#' @param prefix A string to be added before each gene symbol in the search query, default: ''.
-#' @param suffix A string to be added after each gene symbol in the search query, default: ''.
-#' @param writeOut A boolean indicating whether to write the bash commands to file, default: b.dbl.writeOut.
-#' @param Open A boolean indicating whether to open the search links, default: b.dbl.Open.
-#' @param sleep The sleep interval in seconds between opening search links, default: 1.
-#' @examples link_bing("ACTB")
-#'
-#' @export
-#' @importFrom ReadWriter write.simple.append
-link_bing <- function(
-    vector_of_gene_symbols #  Parse bing search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
-    , bing = "https://www.bing.com/search?q = ", prefix = "", suffix = "",
-    writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
-  links <- paste0(bing, prefix, " ", vector_of_gene_symbols, " ", suffix)
-  if (writeOut) {
-    bash_commands <- paste0("open '", links, "'")
-    if (sleep > 0) {
-      bash_commands <- paste0(bash_commands, " ; sleep ", sleep)
-    } # if wait
-    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-  } else if (Open) {
-    for (linkX in links) Sys.sleep(0.3 + runif(1))
-    browseURL(linkX, encodeIfNeeded = TRUE)
-  } else {
-    return(links)
-  }
-}
-
-
-# _________________________________________________________________________________________________
-#' @title HGNC link generator and web lookup
-#'
-#' @description Parses HGNC links for a provided list of gene symbols.
-#' @param vector_of_gene_symbols A character vector of gene symbols to generate HGNC links.
-#' @param HGNC_symbol_search A HGNC search URL string, default:
-#' "https://www.genenames.org/tools/search/#!/?query=".
-#' @param writeOut A boolean indicating whether to write the bash commands to file, default: FALSE.
-#' @param Open A boolean indicating whether to open the HGNC links, default: TRUE.
-#' @examples geneSymbols <- c("Sox2", "Actb")
-#' qHGNC(geneSymbols)
-#' qHGNC(geneSymbols, Open = FALSE)
-#'
-#' @importFrom ReadWriter write.simple.append
-#' @export
-qHGNC <- function(
-    vector_of_gene_symbols,
-    # HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
-    HGNC_symbol_search = "https://www.genenames.org/tools/search/#!/?query=",
-    writeOut = FALSE, Open = TRUE) {
-  links <- paste0(HGNC_symbol_search, vector_of_gene_symbols)
-  if (writeOut) {
-    bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-  } else if (Open) {
-    openURLs.1by1(links)
-  } else {
-    return(links)
-  }
-}
-
-link_HGNC <- qHGNC
-
-# # Quick lookup versioin
-# #' @title qHGNC
-# #' @description Parse HGNC links to your list of gene symbols.
-# #' @param vector_of_gene_symbols PARAM_DESCRIPTION
-# #' @param writeOut PARAM_DESCRIPTION, Default: FALSE
-# #' @param Open PARAM_DESCRIPTION, Default: TRUE
-# #' @examples geneSymbols = c('Sox2', 'Actb'); qHGNC(geneSymbols); qHGNC(geneSymbols, Open = TRUE)
-# #' @export
-# qHGNC < - function(vector_of_gene_symbols # Parse HGNC links to your list of gene symbols.
-#                   , writeOut = FALSE, Open = TRUE) {
-#   links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
-#   if (writeOut) {
-#     bash_commands = paste0("open ", links)
-#     ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
-#     ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-#   } else if (Open) { openURLs.1by1(links) } else { return(links) }
-# }
 
 # _________________________________________________________________________________________________
 #' @title link_wormbase
@@ -635,7 +651,12 @@ link_MGI.JAX <- function(
 }
 
 
+
+
 # _________________________________________________________________________________________________
+# Variant annotation / SNPs ________________________________________________________________ ----
+
+
 #' @title link_SNPedia_clip2clip
 #'
 #' @description Generate SNPedia links from a list of rsIDs copied from an Excel column.
