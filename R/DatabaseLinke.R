@@ -31,7 +31,6 @@ utils::globalVariables(c(
 ))
 
 
-
 # _________________________________________________________________________________________________
 # Helpers ________________________________________________________________ ----
 
@@ -47,16 +46,14 @@ utils::globalVariables(c(
 #' openURLsOneByOne(geneSymbols)
 #'
 #' @export
-openURLs.1by1 <- function(links, wait = 1, verbose =T) {
+openURLs.1by1 <- function(links, wait = 1, verbose = T) {
   for (link in links) {
     if (wait) Sys.sleep(runif(1) + .5)
-
-    if(verbose) message(link)
+    if (verbose) message(link)
     browseURL(link)
     # system(paste0("open '", link, "'"))
   }
 }
-
 
 
 # _________________________________________________________________________________________________
@@ -139,10 +136,11 @@ link_wikipedia <- function(vector_of_gene_symbols # Parse wikipedia search query
 #'
 #' @export
 link_google <- function(
-    vector_of_gene_symbols #  Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
-    , google = "http://www.google.com/search?as_q = ", prefix = "", suffix = "",
-    writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
-  links <- paste0(google, prefix, " ", vector_of_gene_symbols, " ", suffix)
+  vector_of_gene_symbols #  Parse google search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
+  , google = "http://www.google.com/search?as_q=", prefix = "", suffix = "",
+  writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0
+) {
+  links <- paste0(google, prefix, vector_of_gene_symbols, " ", suffix)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
     if (sleep > 0) {
@@ -151,31 +149,7 @@ link_google <- function(
     ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
     ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
-    for (linkX in links) Sys.sleep(0.3 + runif(1))
-    browseURL(linkX, encodeIfNeeded = TRUE)
-  } else {
-    return(links)
-  }
-}
-
-function(vector_of_gene_symbols, prefix = "", suffix = "", writeOut = b.dbl.writeOut,
-         Open = b.dbl.Open, sleep = 1) {
-  links <- paste0(
-    google, prefix, " ", vector_of_gene_symbols,
-    " ", suffix
-  )
-  if (writeOut) {
-    bash_commands <- paste0("open '", links, "'")
-    if (sleep > 0) {
-      bash_commands <- paste0(
-        bash_commands, " ; sleep ",
-        sleep
-      )
-    }
-    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
-  } else if (Open) {
-    openURLs.1by1(links)
+    openURLs.1by1(links, wait = sleep)
   } else {
     return(links)
   }
@@ -198,20 +172,20 @@ function(vector_of_gene_symbols, prefix = "", suffix = "", writeOut = b.dbl.writ
 #' @export
 #' @importFrom ReadWriter write.simple.append
 link_bing <- function(
-    vector_of_gene_symbols #  Parse bing search query links to your list of gene symbols. Strings "prefix" and ""suffix" will be searched for together with each gene ("Human ID4 neurons"). See many additional services in [DatabaseLinke.R](https://vertesy.github.io/DatabaseLinke.R/).
-    , bing = "https://www.bing.com/search?q = ", prefix = "", suffix = "",
-    writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = 0) {
-  links <- paste0(bing, prefix, " ", vector_of_gene_symbols, " ", suffix)
+  vector_of_gene_symbols, bing = "https://www.bing.com/search?q=", prefix = "", suffix = "",
+  writeOut = b.dbl.writeOut, Open = b.dbl.Open, sleep = .5
+) {
+  links <- paste0(bing, prefix, vector_of_gene_symbols, " ", suffix)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
     if (sleep > 0) {
       bash_commands <- paste0(bash_commands, " ; sleep ", sleep)
     } # if wait
+
     ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
     ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
-    for (linkX in links) Sys.sleep(0.3 + runif(1))
-    browseURL(linkX, encodeIfNeeded = TRUE)
+    openURLs.1by1(links, wait = sleep)
   } else {
     return(links)
   }
@@ -220,7 +194,6 @@ link_bing <- function(
 
 # _________________________________________________________________________________________________
 # Bioinformatics databases  ________________________________________________________________ ----
-
 
 
 #' @title HGNC link generator and web lookup
@@ -238,10 +211,11 @@ link_bing <- function(
 #' @importFrom ReadWriter write.simple.append
 #' @export
 qHGNC <- function(
-    vector_of_gene_symbols,
-    # HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
-    HGNC_symbol_search = "https://www.genenames.org/tools/search/#!/?query=",
-    writeOut = FALSE, Open = TRUE) {
+  vector_of_gene_symbols,
+  # HGNC_symbol_search = "http://www.genenames.org/cgi-bin/gene_search?search=",
+  HGNC_symbol_search = "https://www.genenames.org/tools/search/#!/?query=",
+  writeOut = FALSE, Open = TRUE
+) {
   links <- paste0(HGNC_symbol_search, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands <- paste0("open ", links)
@@ -284,7 +258,6 @@ link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Op
 }
 
 
-
 # _________________________________________________________________________________________________
 #' @title Parse STRING Database Links
 #'
@@ -322,9 +295,6 @@ link_String <- function(vector_of_gene_symbols # Parse STRING protein interactio
     return(links)
   }
 }
-
-
-
 
 
 # _________________________________________________________________________________________________
@@ -365,11 +335,8 @@ qString <- function(vector_of_gene_symbols # Parse STRING protein interaction da
 }
 
 
-
 # _________________________________________________________________________________________________
 # Search engines ________________________________________________________________ ----
-
-
 
 
 # _________________________________________________________________________________________________
@@ -584,10 +551,8 @@ link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = FALSE, Ope
 }
 
 
-
 # _________________________________________________________________________________________________
 # Species specific databases ________________________________________________________________ ----
-
 
 
 # _________________________________________________________________________________________________
@@ -605,8 +570,9 @@ link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = FALSE, Ope
 #' @export
 #' @importFrom ReadWriter write.simple.append
 link_wormbase <- function(
-    vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open,
-    wormbase_search_prefix = wormbase_search_prefix) {
+  vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open,
+  wormbase_search_prefix = wormbase_search_prefix
+) {
   links <- paste0(wormbase_search_prefix, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
@@ -618,7 +584,6 @@ link_wormbase <- function(
     return(links)
   }
 }
-
 
 
 # _________________________________________________________________________________________________
@@ -638,8 +603,9 @@ link_wormbase <- function(
 #'
 #' @export
 link_MGI.JAX <- function(
-    vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open,
-    MGI_search_prefix = MGI_search_prefix, MGI_search_suffix = MGI_search_suffix) {
+  vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open = b.dbl.Open,
+  MGI_search_prefix = MGI_search_prefix, MGI_search_suffix = MGI_search_suffix
+) {
   links <- paste0(MGI_search_prefix, vector_of_gene_symbols, MGI_search_suffix)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
@@ -651,8 +617,6 @@ link_MGI.JAX <- function(
     return(links)
   }
 }
-
-
 
 
 # _________________________________________________________________________________________________
@@ -673,10 +637,11 @@ link_MGI.JAX <- function(
 #'
 #' @export
 link_SNPedia_clip2clip <- function(
-    rdIDs = clipr::read_clip_tbl(header = FALSE),
-    searchQueryPrefix = "https://www.snpedia.com/index.php/",
-    as.ExcelLink = TRUE,
-    as.MarkDownLink = FALSE) {
+  rdIDs = clipr::read_clip_tbl(header = FALSE),
+  searchQueryPrefix = "https://www.snpedia.com/index.php/",
+  as.ExcelLink = TRUE,
+  as.MarkDownLink = FALSE
+) {
   v.rdIDs <- tibble::deframe(rdIDs)
   links <- paste0(searchQueryPrefix, v.rdIDs)
   tbl_link <- as.tibble(links)
@@ -695,7 +660,6 @@ link_SNPedia_clip2clip <- function(
 # link_SNPedia_clip2clip()
 
 
-
 # _________________________________________________________________________________________________
 #' @title link_Franklin_clip2clip
 #'
@@ -709,9 +673,10 @@ link_SNPedia_clip2clip <- function(
 #' @importFrom clipr read_clip_tbl write_clip
 #' @importFrom tibble deframe
 link_Franklin_clip2clip <- function(
-    coordinates = clipr::read_clip_tbl(header = FALSE),
-    searchQueryPrefix = "https://franklin.genoox.com/clinical-db/variant/snp/",
-    as.ExcelLink = TRUE) {
+  coordinates = clipr::read_clip_tbl(header = FALSE),
+  searchQueryPrefix = "https://franklin.genoox.com/clinical-db/variant/snp/",
+  as.ExcelLink = TRUE
+) {
   stopifnot(ncol(coordinates) == 2)
   Coord <-
     if (dim(coordinates)[2] == 2) {
@@ -736,7 +701,6 @@ link_Franklin_clip2clip <- function(
 # link_Franklin_clip2clip()
 
 
-
 # _________________________________________________________________________________________________
 #' @title link_VarSome_clip2clip
 #'
@@ -753,12 +717,13 @@ link_Franklin_clip2clip <- function(
 #' @importFrom clipr read_clip_tbl write_clip
 #' @importFrom tibble deframe
 link_VarSome_clip2clip <- function(
-    rdIDs = clipr::read_clip_tbl(header = FALSE),
-    searchQueryPrefix = "https://varsome.com/variant/",
-    hg = "hg19",
-    suffix = "?annotation-mode=germline",
-    as.ExcelLink = TRUE,
-    as.MarkDownLink = FALSE) {
+  rdIDs = clipr::read_clip_tbl(header = FALSE),
+  searchQueryPrefix = "https://varsome.com/variant/",
+  hg = "hg19",
+  suffix = "?annotation-mode=germline",
+  as.ExcelLink = TRUE,
+  as.MarkDownLink = FALSE
+) {
   "https://varsome.com/variant/hg38/rs12970134?annotation-mode=germline"
   prefix_total <- paste0(searchQueryPrefix, hg, "/")
 
@@ -781,7 +746,6 @@ link_VarSome_clip2clip <- function(
   clipr::write_clip(tbl_link)
 }
 # link_VarSome_clip2clip()
-
 
 
 # _________________________________________________________________________________________________
