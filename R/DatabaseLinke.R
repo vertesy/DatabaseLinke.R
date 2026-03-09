@@ -66,8 +66,8 @@ link_GeneCards <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Op
   links <- paste0(GeneCards, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -92,8 +92,8 @@ link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
   links <- paste0(grc_Zebra[1], vector_of_gene_symbols, grc_Zebra[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -118,8 +118,8 @@ link_ensembl_mice <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut,
   links <- paste0(grc_mm38[1], vector_of_gene_symbols, grc_mm38[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -144,8 +144,8 @@ link_ensembl_zebra <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
   links <- paste0(grc_Zebra[1], vector_of_gene_symbols, grc_Zebra[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -170,8 +170,8 @@ link_ensembl <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut, Open
   links <- paste0(ensembl_multispecies[1], vector_of_gene_symbols, ensembl_multispecies[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -196,8 +196,8 @@ link_ensembl.grc37 <- function(vector_of_gene_symbols, writeOut = b.dbl.writeOut
   links <- paste0(grc37[1], vector_of_gene_symbols, grc37[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -223,8 +223,8 @@ link_uniprot_mice <- function(vector_of_gene_symbols, writeOut = FALSE, Open = b
   links <- paste0(uniprot_mouse[1], vector_of_gene_symbols, uniprot_mouse[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -251,8 +251,8 @@ link_uniprot_human <- function(vector_of_gene_symbols, writeOut = FALSE, Open = 
   links <- paste0(uniprot_human[1], vector_of_gene_symbols, uniprot_human[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -277,8 +277,8 @@ link_uniprot_zebrafish <- function(vector_of_gene_symbols, writeOut = FALSE, Ope
   links <- paste0(uniprot_zebra[1], vector_of_gene_symbols, uniprot_zebra[2])
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -316,8 +316,8 @@ link_String <- function(vector_of_gene_symbols # Parse STRING protein interactio
   links <- paste0(STRING, vector_of_gene_symbols, suffix)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -354,8 +354,8 @@ qString <- function(vector_of_gene_symbols # Parse STRING protein interaction da
   links <- paste0(STRING, vector_of_gene_symbols, suffix)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -384,8 +384,8 @@ link_pubmed <- function(vector_of_gene_symbols # Parse PUBMED database links to 
   links <- paste0(PUBMED_search_prefix, vector_of_gene_symbols, " ", paste(additional_terms, collapse = " "))
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -412,8 +412,8 @@ link_wikipedia <- function(vector_of_gene_symbols # Parse wikipedia search query
   links <- paste0(wikipedia, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -450,8 +450,8 @@ link_google <- function(
     if (sleep > 0) {
       bash_commands <- paste0(bash_commands, " ; sleep ", sleep)
     } # if wait
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName =  BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     for (linkX in links) Sys.sleep(0.3 + runif(1))
     browseURL(linkX, encodeIfNeeded = TRUE)
@@ -474,8 +474,8 @@ function(vector_of_gene_symbols, prefix = "", suffix = "", writeOut = b.dbl.writ
         sleep
       )
     }
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -509,8 +509,8 @@ link_bing <- function(
     if (sleep > 0) {
       bash_commands <- paste0(bash_commands, " ; sleep ", sleep)
     } # if wait
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     for (linkX in links) Sys.sleep(0.3 + runif(1))
     browseURL(linkX, encodeIfNeeded = TRUE)
@@ -543,8 +543,8 @@ qHGNC <- function(
   links <- paste0(HGNC_symbol_search, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands <- paste0("open ", links)
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -567,8 +567,8 @@ link_HGNC <- qHGNC
 #   links = paste0(HGNC_symbol_search, vector_of_gene_symbols)
 #   if (writeOut) {
 #     bash_commands = paste0("open ", links)
-#     ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-#     ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+#     ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+#     ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
 #   } else if (Open) { openURLs.1by1(links) } else { return(links) }
 # }
 
@@ -592,8 +592,8 @@ link_wormbase <- function(
   links <- paste0(wormbase_search_prefix, vector_of_gene_symbols)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
@@ -625,8 +625,8 @@ link_MGI.JAX <- function(
   links <- paste0(MGI_search_prefix, vector_of_gene_symbols, MGI_search_suffix)
   if (writeOut) {
     bash_commands <- paste0("open '", links, "'")
-    ReadWriter::write.simple.append("", ManualName = BashScriptLocation)
-    ReadWriter::write.simple.append(bash_commands, ManualName = BashScriptLocation)
+    ReadWriter::write.simple.append("", manualFileName = BashScriptLocation)
+    ReadWriter::write.simple.append(bash_commands, manualFileName = BashScriptLocation)
   } else if (Open) {
     openURLs.1by1(links)
   } else {
