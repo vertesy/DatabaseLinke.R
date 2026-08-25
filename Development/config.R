@@ -3,7 +3,7 @@
 
 DESCRIPTION <- list(
   package.name = "DatabaseLinke.R",
-  version = "1.8.1",
+  version = "1.8.2",
   title = "DatabaseLinke.R – Parse, open, save, links to databases and search engines from your list of gene symbols",
   description = "A set of functions to parse and open (search query) links
     to genomics related and other websites for R. Useful when you want to explore

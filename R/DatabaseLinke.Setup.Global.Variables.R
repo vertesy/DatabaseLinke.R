@@ -5,7 +5,6 @@
 # source('https://raw.githubusercontent.com/vertesy/DatabaseLinke.R/master/DatabaseLinke.R')
 
 
-
 # User Setup ----------------------------------------------------------------------
 {
   b.dbl.writeOut <- F

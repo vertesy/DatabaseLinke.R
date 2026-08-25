@@ -80,7 +80,7 @@ if (F) {
 (ls.scripts.full.path <- list.files(file.path(repository.dir, "R"), full.names = T, pattern = '.R$'))
 for (scriptX in ls.scripts.full.path) {
   # PackageTools::list_of_funs_to_markdown(scriptX)
-  # PackageTools::list_of_funs_to_markdown_simple(scriptX)
+  PackageTools::list_of_funs_to_markdown_simple(scriptX)
 }
 file.edit(paste0(repository.dir, "R/list.of.functions.in.", package.name, ".det.md"))
 file.edit(paste0(repository.dir, "README.md"))
